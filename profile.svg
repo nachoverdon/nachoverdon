@@ -91,6 +91,7 @@
 
 			<div class="shine">
 				<div class="shine_shape">
+					<img class="shine_fox" src="https://cdn.discordapp.com/attachments/502775901562339330/736622785102610432/fox_shine_512.png" alt="Fox"/>
 					<svg version="1.1" width="320" height="320" viewBox="0 0 320 320" fill="none" stroke="#4AF" stroke-linecap="round"
 						 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						 <defs>
@@ -118,7 +119,6 @@
 						<use xlink:href="#hex2" transform="rotate(300 160 160)"/>
 
 					</svg>
-					<img class="shine_fox" src="https://cdn.discordapp.com/attachments/502775901562339330/736622785102610432/fox_shine_512.png" alt="Fox"/>
 				</div>
 				<div class="shine_text">
 					<h1>Nacho Verdón</h1>
