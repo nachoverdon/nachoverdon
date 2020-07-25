@@ -68,9 +68,9 @@
 			<div class="falco">
 				<div class="falco_container">
 					<div class="falco_shape">
-					<video class="falco_video" autoplay muted loop>
-						<!-- <source src="https://cdn.discordapp.com/attachments/725164081098653726/725979066867646494/xASpZVIpuh.mp4" type="video/webm" /> -->
-					</video>
+					<!-- <video class="falco_video" autoplay muted loop>
+						<source src="https://cdn.discordapp.com/attachments/725164081098653726/725979066867646494/xASpZVIpuh.mp4" type="video/webm" />
+					</video> -->
 					</div>
 					<p class="falco_text">
 						<h1>Nacho Verdón</h1>
