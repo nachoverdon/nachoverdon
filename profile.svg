@@ -33,6 +33,10 @@
 					top: 30px;
 				}
 
+				.shine_text {
+					font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+				}
+
 				.falco {
 					margin: 0;
 					width: 100%;
@@ -123,7 +127,6 @@
 					</svg>
 				</div>
 				<div class="shine_text">
-					<h1>Nacho Verdón</h1>
 					Welcome to my github profile. I'm a developer from Valencia, Spain. I like videogames, specially <a class="discord" href="http://playmelee.es">Super Smash Bros. Melee</a>.
 					I'm currently working as a web developer at <a  class="epigram" href="https://epigram.tech">Epigram Technologies</a>. Please, take a look at my projects.
 					<br/>
