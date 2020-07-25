@@ -92,14 +92,16 @@
 				<div class="shine_shape">
 					<svg version="1.1" width="320" height="320" viewBox="0 0 320 320" fill="none" stroke="#4AF" stroke-linecap="round"
 						 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						<path id="hex1">
-							<animate id="p1" attributeName="d" values="m160,160l0,0 0,0;m130,110l30,-17 30,17;m130,60l30,-17 30,17;m160,20l0,0 0,0" dur="1.5s" repeatCount="indefinite"/>
-							<animate attributeName="stroke-width" values="12;10;8;6;0" dur="1.5s" repeatCount="indefinite" begin="p1.begin"/>
-						</path>
-						<path id="hex2">
-							<animate id="p2" attributeName="d" values="m160,160l0,0 0,0;m130,110l30,-17 30,17;m130,60l30,-17 30,17;m160,20l0,0 0,0" dur="1.5s" repeatCount="indefinite" begin="p1.begin+0.25s"/>
-							<animate attributeName="stroke-width" values="12;10;8;6;0" dur="1.5s" repeatCount="indefinite" begin="p1.begin+0.25s"/>
-						</path>
+						 <defs>
+							<path id="hex1">
+								<animate id="p1" attributeName="d" values="m160,160l0,0 0,0;m130,110l30,-17 30,17;m130,60l30,-17 30,17;m160,20l0,0 0,0" dur="1.5s" repeatCount="indefinite"/>
+								<animate attributeName="stroke-width" values="12;10;8;6;0" dur="1.5s" repeatCount="indefinite" begin="p1.begin"/>
+							</path>
+							<path id="hex2">
+								<animate id="p2" attributeName="d" values="m160,160l0,0 0,0;m130,110l30,-17 30,17;m130,60l30,-17 30,17;m160,20l0,0 0,0" dur="1.5s" repeatCount="indefinite" begin="p1.begin+0.25s"/>
+								<animate attributeName="stroke-width" values="12;10;8;6;0" dur="1.5s" repeatCount="indefinite" begin="p1.begin+0.25s"/>
+							</path>
+						 </defs>
 						<use xlink:href="#hex1"/>
 						<use xlink:href="#hex1" transform="rotate(60 160 160)"/>
 						<use xlink:href="#hex1" transform="rotate(120 160 160)"/>
