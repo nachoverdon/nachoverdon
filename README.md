@@ -1,3 +1,3 @@
 <div align="center">
-    <img src="profile.svg" width="800" height="400">
+    <img src="profile.svg" width="800" height="512">
 </div>

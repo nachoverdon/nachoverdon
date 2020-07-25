@@ -1,7 +1,14 @@
-<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" viewBox="0 0 800 512" width="800" height="512" xmlns="http://www.w3.org/2000/svg">
 	<foreignObject width="100%" height="100%">
 		<div xmlns="http://www.w3.org/1999/xhtml">
 			<style>
+				.falco {
+					margin: 0;
+					width: 100%;
+					height: 512px;
+					background: #222;
+				}
+
 				.falco_container {
 					display: flow-root;
 					box-sizing: content-box;
@@ -82,6 +89,7 @@
 					</p>
 				</div>
 			</div>
+
 		</div>
 	</foreignObject>
 </svg>
