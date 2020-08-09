@@ -4,9 +4,9 @@ import { Toolkit } from "actions-toolkit";
 import { OutputType } from "actions-toolkit/lib/outputs";
 import { InputType } from "actions-toolkit/lib/inputs";
 import fs from "fs";
-import http from "http";
+import https from "https";
 import { Stats } from "./stats";
-import { getInput } from "@actions/core";
+// import { getInput } from "@actions/core";
 
 config();
 
@@ -41,7 +41,7 @@ async function commitFile() {
     await exec("git", ["push"]);
 }
 
-const options: http.RequestOptions = {
+const options: https.RequestOptions = {
     host: "https://nachoverdon.herokuapp.com",
     path: "/getLastMatchStats",
     method: 'GET',
@@ -52,7 +52,7 @@ const options: http.RequestOptions = {
 
 console.log("Requesting...", options);
 
-http.request(options, (response: http.IncomingMessage) => {
+https.request(options, (response) => {
     let dataStr = "";
 
     response.on("data", (chunk) => {
