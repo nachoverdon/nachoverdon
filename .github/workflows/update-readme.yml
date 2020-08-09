@@ -1,0 +1,17 @@
+name: Update README
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        env:
+          URL: ${{ secrets.URL }}
+      - run: npm ci
+      - run: npm run github

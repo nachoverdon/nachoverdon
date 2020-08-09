@@ -1,0 +1,37 @@
+{
+  "name": "slippi-stats",
+  "version": "1.0.0",
+  "description": "Process stats from a game",
+  "main": "js/express.js",
+  "engines": {
+    "node": "10.15.2",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node js/express.js",
+    "github": "npm run compile && node js/github.js",
+    "postinstall": "npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nachoverdon/nachoverdon.git"
+  },
+  "author": "Nacho Verdón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nachoverdon/nachoverdon/issues"
+  },
+  "homepage": "https://github.com/nachoverdon/nachoverdon#readme",
+  "dependencies": {
+    "@slippi/slippi-js": "^5.0.4",
+    "@types/express": "^4.17.7",
+    "actions-toolkit": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "slippi-search": "^1.4.4",
+    "typescript": "^3.9.7"
+  }
+}

@@ -1,1 +1,14 @@
+# IntelliJ project files
 .idea
+
+# Node modules
+node_modules
+
+# JavaScript generated files
+js
+
+# Environment variables
+.env
+
+# Replay watcher.exe
+replay_watcher/*.exe
