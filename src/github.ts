@@ -42,7 +42,7 @@ async function commitFile() {
 
 const options: http.RequestOptions = {
     host: process.env.URL,
-    port: process.env.PORT,
+    // port: process.env.PORT,
     path: "/getLastMatchStats",
     method: 'GET',
     headers: {
