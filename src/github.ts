@@ -1,11 +1,12 @@
 import { spawn } from "child_process"
 import { config } from "dotenv";
-import {Toolkit} from "actions-toolkit";
-import {OutputType} from "actions-toolkit/lib/outputs";
-import {InputType} from "actions-toolkit/lib/inputs";
+import { Toolkit } from "actions-toolkit";
+import { OutputType } from "actions-toolkit/lib/outputs";
+import { InputType } from "actions-toolkit/lib/inputs";
 import fs from "fs";
 import http from "http";
-import {Stats} from "./stats";
+import { Stats } from "./stats";
+import core from "@actions/core";
 
 config();
 
@@ -41,8 +42,8 @@ async function commitFile() {
 }
 
 const options: http.RequestOptions = {
-    host: process.env.URL,
-    // port: process.env.PORT,
+    host: process.env.URL ? process.env.URL : core.getInput("URL"),
+    // port: process.env.PORT ? process.env.PORT : core.getInput("PORT"),
     path: "/getLastMatchStats",
     method: 'GET',
     headers: {
