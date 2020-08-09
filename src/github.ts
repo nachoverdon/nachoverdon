@@ -6,7 +6,7 @@ import { InputType } from "actions-toolkit/lib/inputs";
 import fs from "fs";
 import http from "http";
 import { Stats } from "./stats";
-import * as core from "@actions/core";
+import { getInput } from "@actions/core";
 
 config();
 
@@ -42,7 +42,7 @@ async function commitFile() {
 }
 
 const options: http.RequestOptions = {
-    host: process.env.URL ? process.env.URL : core.getInput("URL"),
+    host: process.env.URL ? process.env.URL : getInput("URL"),
     // port: process.env.PORT ? process.env.PORT : core.getInput("PORT"),
     path: "/getLastMatchStats",
     method: 'GET',
