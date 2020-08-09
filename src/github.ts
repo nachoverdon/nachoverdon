@@ -42,8 +42,7 @@ async function commitFile() {
 }
 
 const options: http.RequestOptions = {
-    host: process.env.URL ? process.env.URL : getInput("URL"),
-    port: process.env.PORT ? process.env.PORT : getInput("PORT"),
+    host: "https://nachoverdon.herokuapp.com",
     path: "/getLastMatchStats",
     method: 'GET',
     headers: {
