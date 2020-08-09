@@ -6,7 +6,7 @@ import { InputType } from "actions-toolkit/lib/inputs";
 import fs from "fs";
 import http from "http";
 import { Stats } from "./stats";
-import core from "@actions/core";
+import * as core from "@actions/core";
 
 config();
 
