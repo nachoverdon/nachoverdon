@@ -21,4 +21,4 @@ jobs:
         v-version: latest
       id: v
     - name: Build replay_watcher.v -prod
-      run: v replay_watcher/replay_watcher.exe -prod
+      run: v -prod replay_watcher/replay_watcher.v
