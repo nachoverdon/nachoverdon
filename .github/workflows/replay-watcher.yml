@@ -1,0 +1,24 @@
+name: Build replay watcher
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up V version latest
+      uses: nocturlab/setup-vlang-action@v1
+      with:
+        v-version: latest
+      id: v
+    - name: Build replay_watcher.v -prod
+      run: v replay_watcher/replay_watcher.exe -prod
