@@ -10,23 +10,28 @@ struct Config {
 const (
 	slp_ext = "slp"
 	config_file_name = "config.json"
-	sleep_time = 20000 // 20 seconds
+	sleep_time = 20_000 // 20 seconds
 	endpoint = "processReplay"
 )
 
 fn main() {
 	config_file := read_file(config_file_name) or { return }
 	cfg := json.decode(Config, config_file) or { return }
+	mut latest_slp_file := ""
 
 	for {
-		latest_slp_file := get_latest_slp_file(cfg) or {
+		latest_slp_file = get_latest_slp_file(cfg) or {
 			println(err)
-			return
+			""
 		}
 
-		post_replay(cfg.url, latest_slp_file)
+		if exists(latest_slp_file) {
+			post_replay(cfg.url, latest_slp_file)
+			println("Last game was ${latest_slp_file}.")
+		}
 
-		println("Last game was ${latest_slp_file}. Sleeping for ${sleep_time / 1000} seconds.")
+
+		println("Sleeping for ${sleep_time / 1000} seconds.")
 
 		time.sleep_ms(sleep_time)
 	}
@@ -35,10 +40,6 @@ fn main() {
 fn get_latest_slp_file(cfg Config) ?string {
 	if !exists(cfg.directory) || !is_dir(cfg.directory) {
 		return error("Not exists or is not dir $cfg.directory")
-	}
-
-	if is_dir_empty(cfg.directory) {
-		return error("Directory is empty.")
 	}
 
 	slp_files := walk_ext(cfg.directory, slp_ext)
@@ -53,6 +54,10 @@ fn get_latest_slp_file(cfg Config) ?string {
 			latest_modified = last_modified
 			latest_slp_file = file_name
 		}
+	}
+
+	if latest_slp_file == "" {
+		return error("No replay found.")
 	}
 
 	return latest_slp_file
