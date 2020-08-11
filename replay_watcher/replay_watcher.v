@@ -18,16 +18,23 @@ fn main() {
 	config_file := read_file(config_file_name) or { return }
 	cfg := json.decode(Config, config_file) or { return }
 	mut latest_slp_file := ""
+	mut slp_file := ""
+
+	println("Starting replay watcher...")
 
 	for {
-		latest_slp_file = get_latest_slp_file(cfg) or {
+		slp_file = get_latest_slp_file(cfg) or {
 			println(err)
 			""
 		}
 
-		if exists(latest_slp_file) {
-			post_replay(cfg.url, latest_slp_file)
-			println("Last game was ${latest_slp_file}.")
+		if (slp_file != latest_slp_file && slp_file != "") {
+			latest_slp_file = slp_file
+
+			if exists(latest_slp_file) {
+				post_replay(cfg.url, latest_slp_file)
+				println("Last game was ${latest_slp_file}.")
+			}
 		}
 
 
