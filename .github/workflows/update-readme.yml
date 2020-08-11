@@ -15,5 +15,7 @@ jobs:
           URL: ${{ secrets.URL }}
           PORT: ${{ secrets.PORT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm ci
       - run: npm run github
