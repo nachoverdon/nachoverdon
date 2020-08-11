@@ -121,7 +121,7 @@ function updateReadme(stats: Stats): void {
         },
         {
             event: ["schedule", "workflow_dispatch"],
-            secrets: ["GITHUB_TOKEN"],
+            secrets: ["token"],
         }
     )
 }
