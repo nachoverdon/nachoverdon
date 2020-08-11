@@ -45,8 +45,12 @@ function processReplay(request: Request, response: Response): void {
         request.on('data', function(chunk) {
             buffer = Buffer.concat([buffer, chunk]);
         });
+
         request.on('end', function() {
             const game = new SlippiGame(buffer);
+
+            if (!game)
+                throw new Error("Game is null.");
 
             // console.log(game.getSettings(), game.getMetadata(), game.getStats());
             // @ts-ignore
@@ -55,9 +59,7 @@ function processReplay(request: Request, response: Response): void {
             if (accountIndex === -1)
                 return;
 
-            const stats = getStats(game, accountIndex);
-
-            lastStats = stats;
+            lastStats = getStats(game, accountIndex);
 
             response.json({
                 status: "OK",

@@ -12,3 +12,4 @@ js
 
 # Replay watcher.exe
 replay_watcher/*.exe
+replay_watcher/*.bat
