@@ -28,7 +28,7 @@ fn main() {
 			""
 		}
 
-		if (slp_file != latest_slp_file && slp_file != "") {
+		if slp_file != latest_slp_file && slp_file != "" {
 			latest_slp_file = slp_file
 
 			if exists(latest_slp_file) {
