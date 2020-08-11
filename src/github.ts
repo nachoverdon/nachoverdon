@@ -42,7 +42,7 @@ async function commitFile() {
 }
 
 const options: https.RequestOptions = {
-    host: "https://nachoverdon.herokuapp.com",
+    host: "nachoverdon.herokuapp.com",
     path: "/getLastMatchStats",
     method: 'GET',
     headers: {
