@@ -92,24 +92,29 @@ function updateReadme(stats: Stats): void {
 <h1>Latest match stats:</h1>
 <p>
 <span style="${stats.win ? "#5f5" : "#f55"}">${stats.win ? "WIN" : "LOSE"}</span>
+<br>
 <span>${stats.character.name} vs ${stats.opponentCharacter.name}</span>
+<br>
 <span>Stage: ${stats.stage}</span>
+<br>
 <span>Duration: ${stats.duration}</span>
 <br>
 <span>Stocks remaining: ${stats.stocksRemaining}</span>
+<br>
 <span>Avg. openings per kill: ${stats.openingsPerKill}</span>
+<br>
 <span>Avg. damage per opening: ${stats.damagePerOpening}%</span>
+<br>
 <span>Total damage: ${stats.totalDamage}%</span>
+<br>
 <span>Inputs per minute: ${stats.inputsPerMinute}</span>
+<br>
 </p>
 </div>
 `
 
             readmeContent = readmeContent.replace(/<!--START_SECTION:slippi_stats-->(.|[\r\n])*<!--END_SECTION:slippi_stats-->/gm,
-                `<!--START_SECTION:slippi_stats-->
-                                ${statsHtml}
-                            <!--END_SECTION:slippi_stats-->
-            `);
+                `<!--START_SECTION:slippi_stats-->${statsHtml}<!--END_SECTION:slippi_stats-->`);
 
             fs.writeFileSync("./README.md", readmeContent);
 
