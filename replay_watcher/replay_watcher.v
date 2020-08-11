@@ -81,6 +81,7 @@ fn post_replay(url string, replay_path string) {
 		data: replay_data,
 		headers: {
 			"Content-Type": "application/octet-stream"
+			"Content-Length": "${replay_data.bytes().len}"
 		}
 	}) or {
 		println("Unable to do POST request to $url$endpoint: $err")
