@@ -6,21 +6,21 @@
 <p>
 <span style="#f55">LOSE</span>
 <br>
-<span>Fox vs Ice Climbers</span>
+<span>Marth vs Sheik</span>
 <br>
-<span>Stage: Yoshi's Story</span>
+<span>Stage: Battlefield</span>
 <br>
-<span>Duration: 2:37</span>
+<span>Duration: 2:22</span>
 <br>
 <span>Stocks remaining: 0</span>
 <br>
-<span>Avg. openings per kill: 8</span>
+<span>Avg. openings per kill: 7</span>
 <br>
-<span>Avg. damage per opening: 14.66124963760376%</span>
+<span>Avg. damage per opening: 18.500714710780553%</span>
 <br>
-<span>Total damage: 234.57999420166016%</span>
+<span>Total damage: 259.01000595092773%</span>
 <br>
-<span>Inputs per minute: 544.8319594166138</span>
+<span>Inputs per minute: 351.48549458231383</span>
 <br>
 </p>
 </div>
