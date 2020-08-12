@@ -60,12 +60,6 @@ fn get_latest_slp_file(cfg Config) ?string {
 		return error("No replay found.")
 	}
 
-	if is_writable(latest_slp_file) {
-		println("Is writable")
-	} else {
-		println("Not writable")
-	}
-
 	return latest_slp_file
 }
 
