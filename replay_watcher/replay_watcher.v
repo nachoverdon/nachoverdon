@@ -1,6 +1,5 @@
 import json
 import time
-import net.http
 
 struct Config {
 	directory string
@@ -32,11 +31,10 @@ fn main() {
 			latest_slp_file = slp_file
 
 			if exists(latest_slp_file) {
-				post_replay(cfg.url, latest_slp_file)
+				post_replay(cfg.url + endpoint, latest_slp_file)
 				println("Last game was ${latest_slp_file}.")
 			}
 		}
-
 
 		println("Sleeping for ${sleep_time / 1000} seconds.")
 
@@ -71,22 +69,13 @@ fn get_latest_slp_file(cfg Config) ?string {
 }
 
 fn post_replay(url string, replay_path string) {
-	replay_data := read_file(replay_path) or {
-		println("Unable to read data from file $replay_path")
+	result := exec('curl -k --location --request POST "$url" \
+		--header "Content-Type: application/octet-stream" \
+		--data-binary "@$replay_path"'
+	) or {
+		println("Unable to do POST request to $url: $err")
 		return
 	}
 
-	response := http.fetch(url + endpoint, {
-		method: .post
-		data: replay_data,
-		headers: {
-			"Content-Type": "application/octet-stream"
-			"Content-Length": "${replay_data.bytes().len}"
-		}
-	}) or {
-		println("Unable to do POST request to $url$endpoint: $err")
-		return
-	}
-
-	println("Response returned with status code: $response.status_code: $response.text")
+	println("Response returned with status code: $result.exit_code: $result.output")
 }
