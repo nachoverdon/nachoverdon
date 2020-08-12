@@ -49,7 +49,7 @@ function processReplay(request: Request, response: Response): void {
         request.on('end', function() {
             const game = new SlippiGame(buffer);
 
-            if (!game)
+            if (!game && game != null)
                 throw new Error("Game is null.");
 
             // console.log(game.getSettings(), game.getMetadata(), game.getStats());

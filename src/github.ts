@@ -91,7 +91,7 @@ function updateReadme(stats: Stats): void {
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="${stats.win ? "#5f5" : "#f55"}">${stats.win ? "WIN" : "LOSE"}</span>
+<span style="${stats.win ? "#5f5;" : "#f55;"}">${stats.win ? "WIN" : "LOSE"}</span>
 <br>
 <span>${stats.character.name} vs ${stats.opponentCharacter.name}</span>
 <br>
