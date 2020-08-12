@@ -91,7 +91,7 @@ function updateReadme(stats: Stats): void {
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="${stats.win ? "#5f5;" : "#f55;"}">${stats.win ? "WIN" : "LOSE"}</span>
+<span style="color: ${stats.win ? "#5f5" : "#f55"};">${stats.win ? "WIN" : "LOSE"}</span>
 <br>
 <span>${stats.character.name} vs ${stats.opponentCharacter.name}</span>
 <br>
@@ -99,15 +99,15 @@ function updateReadme(stats: Stats): void {
 <br>
 <span>Duration: ${stats.duration}</span>
 <br>
-<span>Stocks remaining: ${stats.stocksRemaining}</span>
 <br>
-<span>Avg. openings per kill: ${stats.openingsPerKill}</span>
+${stats.win ? `<span>Stocks remaining: ${stats.stocksRemaining}</span><br>` : ""}
+<span>Avg. openings per kill: ${stats.openingsPerKill.toFixed(1)}</span>
 <br>
-<span>Avg. damage per opening: ${stats.damagePerOpening}%</span>
+<span>Avg. damage per opening: ${stats.damagePerOpening.toFixed(1)}%</span>
 <br>
-<span>Total damage: ${stats.totalDamage}%</span>
+<span>Total damage: ${stats.totalDamage.toFixed(1)}%</span>
 <br>
-<span>Inputs per minute: ${stats.inputsPerMinute}</span>
+<span>Inputs per minute: ${stats.inputsPerMinute.toFixed(1)}</span>
 <br>
 </p>
 </div>

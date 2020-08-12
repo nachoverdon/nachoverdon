@@ -17,23 +17,18 @@ fn main() {
 	config_file := read_file(config_file_name) or { return }
 	cfg := json.decode(Config, config_file) or { return }
 	mut latest_slp_file := ""
-	mut slp_file := ""
 
 	println("Starting replay watcher...")
 
 	for {
-		slp_file = get_latest_slp_file(cfg) or {
+		latest_slp_file = get_latest_slp_file(cfg) or {
 			println(err)
 			""
 		}
 
-		if slp_file != latest_slp_file && slp_file != "" {
-			latest_slp_file = slp_file
-
-			if exists(latest_slp_file) {
-				post_replay(cfg.url + endpoint, latest_slp_file)
-				println("Last game was ${latest_slp_file}.")
-			}
+		if latest_slp_file != "" && exists(latest_slp_file) {
+			post_replay(cfg.url + endpoint, latest_slp_file)
+			println("Last game was ${latest_slp_file}.")
 		}
 
 		println("Sleeping for ${sleep_time / 1000} seconds.")
@@ -65,11 +60,17 @@ fn get_latest_slp_file(cfg Config) ?string {
 		return error("No replay found.")
 	}
 
+	if is_writable(latest_slp_file) {
+		println("Is writable")
+	} else {
+		println("Not writable")
+	}
+
 	return latest_slp_file
 }
 
 fn post_replay(url string, replay_path string) {
-	result := exec('curl -k --location --request POST "$url" \
+	result := exec('start /b curl -k --location --request POST "$url" \
 		--header "Content-Type: application/octet-stream" \
 		--data-binary "@$replay_path"'
 	) or {

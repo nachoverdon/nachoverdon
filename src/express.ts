@@ -49,8 +49,23 @@ function processReplay(request: Request, response: Response): void {
         request.on('end', function() {
             const game = new SlippiGame(buffer);
 
-            if (!game && game != null)
+            if (!game)
                 throw new Error("Game is null.");
+
+            const anyPlayerIsNotHuman = game.getSettings().players.find(player => {
+                return player.type == 0 || player.type == 1 || player.type || 2
+            });
+
+            const gameIsUnresolved = game.getGameEnd() && game.getGameEnd()?.gameEndMethod === 0;
+
+            if (gameIsUnresolved || anyPlayerIsNotHuman) {
+                response.json({
+                    status: "OK",
+                });
+
+                return;
+            }
+
 
             // console.log(game.getSettings(), game.getMetadata(), game.getStats());
             // @ts-ignore
