@@ -33,7 +33,7 @@ async function commitFile() {
         "config",
         "--global",
         "user.email",
-        "nverblaz@gmail.com",
+        "readmebot@nachoverdon.com",
     ]);
     await exec("git", ["config", "--global", "user.name", "readme-bot"]);
     await exec("git", ["add", "README.md"]);
