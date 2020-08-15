@@ -50,7 +50,7 @@ function processReplay(request: Request, response: Response): void {
                 throw new Error("Game is null.");
 
             const anyPlayerIsNotHuman = game.getSettings().players.find(player => {
-                return player.type == 0 || player.type == 1 || player.type || 2
+                return player.type == 0 || player.type == 1 || player.type == 2;
             });
 
             if (anyPlayerIsNotHuman) {
