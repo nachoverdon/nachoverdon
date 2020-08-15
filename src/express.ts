@@ -71,8 +71,13 @@ function processReplay(request: Request, response: Response): void {
             // @ts-ignore
             const accountIndex = getPlayerIndex(game);
 
-            if (accountIndex === -1)
+            if (accountIndex === -1) {
+                response.json({
+                    status: "error",
+                    error: "Player not found. Get gud, kid.",
+                });
                 return;
+            }
 
             lastStats = getStats(game, accountIndex);
 
@@ -101,6 +106,8 @@ function getPlayerIndex(game: SlippiGame): number {
         if (SLIPPI_ACCOUNTS.includes(player.names.code))
             return parseInt(index);
     }
+
+    console.log(`Cannot find any account that matches ${SLIPPI_ACCOUNTS.join(", ")}`);
 
     return -1;
 }
