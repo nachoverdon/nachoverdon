@@ -17,7 +17,7 @@ let lastStats: Stats | undefined;
 
 app.get("/", (_request: Request, response: Response) => {
     response.send("Visit my GitHub at: https://github.com/nachoverdon");
-})
+});
 app.get("/getLastMatchStats", getLastMatchStats);
 app.post("/processReplay", processReplay);
 app.listen(port, () => console.log(`Listening on port ${port}`));
