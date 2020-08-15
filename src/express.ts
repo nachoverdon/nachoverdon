@@ -24,10 +24,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 function getLastMatchStats(_request: Request, response: Response): void {
     if (!lastStats) {
-        response.json({
-            status: "error",
-            error: "No stats available yet.",
-        });
+        sendError(response, "No stats available yet.");
 
         return;
     }
@@ -56,27 +53,26 @@ function processReplay(request: Request, response: Response): void {
                 return player.type == 0 || player.type == 1 || player.type || 2
             });
 
-            const gameIsUnresolved = game.getGameEnd() && game.getGameEnd()?.gameEndMethod === 0;
-
-            if (gameIsUnresolved || anyPlayerIsNotHuman) {
-                response.json({
-                    status: "error",
-                    error: "Game is unresolved or a player is not human.",
-                });
+            if (anyPlayerIsNotHuman) {
+                sendError(response, "A player is not human.");
 
                 return;
             }
 
+            const gameIsUnresolved = game.getGameEnd() && game.getGameEnd()?.gameEndMethod === 0;
+
+            if (gameIsUnresolved) {
+                sendError(response, "Game is unresolved");
+
+                return;
+            }
 
             // console.log(game.getSettings(), game.getMetadata(), game.getStats());
             // @ts-ignore
             const accountIndex = getPlayerIndex(game);
 
             if (accountIndex === -1) {
-                response.json({
-                    status: "error",
-                    error: "Player not found. Get gud, kid.",
-                });
+                sendError(response, "Player not found. Get gud, kid.");
 
                 return;
             }
@@ -91,10 +87,7 @@ function processReplay(request: Request, response: Response): void {
         const errorMessage = "Unable to process game."
 
         console.error(errorMessage, e);
-        response.json({
-            status: "error",
-            error: errorMessage,
-        });
+        sendError(response, errorMessage);
     }
 }
 
@@ -205,4 +198,11 @@ function getDuration(frames: number): string {
     const duration = moment.duration(frames / 60, 'seconds');
 
     return moment.utc(duration.as('milliseconds')).format('m:ss');
+}
+
+function sendError(res: Response, err: string): void {
+    res.json({
+        status: "error",
+        error: err,
+    });
 }
