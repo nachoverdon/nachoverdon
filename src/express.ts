@@ -163,10 +163,10 @@ function getStats(game: SlippiGame, playerIndex: number): Stats {
     const stocksRemaining = game.getLatestFrame()!.players[playerIndex].post.stocksRemaining!;
     const stats = game.getStats();
     const overallStats = stats.overall[playerIndex];
-    const openingsPerKill = overallStats.openingsPerKill.ratio!;
+    const openingsPerKill = overallStats.openingsPerKill.ratio ? overallStats.openingsPerKill.ratio : 0;
     const totalDamage = overallStats.totalDamage;
-    const damagePerOpening = overallStats.damagePerOpening.ratio!;
-    const inputsPerMinute = overallStats.inputsPerMinute.ratio!;
+    const damagePerOpening = overallStats.damagePerOpening.ratio ? overallStats.damagePerOpening.ratio : 0;
+    const inputsPerMinute = overallStats.inputsPerMinute.ratio ? overallStats.inputsPerMinute.ratio : 0;
     const duration = getDuration(stats.lastFrame);
 
 
