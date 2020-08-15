@@ -9,34 +9,38 @@ struct Config {
 const (
 	slp_ext = "slp"
 	config_file_name = "config.json"
-	sleep_time = 20_000 // 20 seconds
+	sleep_time_ms = 5_000 // 5 seconds
+	watcher_sleep_ms = 1000 // 1 second
 	endpoint = "processReplay"
 )
 
 fn main() {
 	config_file := read_file(config_file_name) or { return }
 	cfg := json.decode(Config, config_file) or { return }
-	mut latest_slp_file := ""
+	mut slp_file := ""
+	mut last_slp_file := ""
 
 	println("Starting replay watcher...")
 
 	for {
-		latest_slp_file = get_latest_slp_file(cfg) or {
+		slp_file = get_latest_slp_file(cfg) or {
 			println(err)
 			""
 		}
 
-		if latest_slp_file != "" && exists(latest_slp_file) {
-			post_replay(cfg.url + endpoint, latest_slp_file)
-			println("Last game was ${latest_slp_file}.")
+		if slp_file != "" && slp_file != last_slp_file && exists(slp_file) {
+			last_slp_file = slp_file
+			watch_file(slp_file)
+			post_replay(cfg.url + endpoint, slp_file)
 		}
 
-		println("Sleeping for ${sleep_time / 1000} seconds.")
+		println("Waiting ${sleep_time_ms / 1000} seconds for new replays...")
 
-		time.sleep_ms(sleep_time)
+		time.sleep_ms(sleep_time_ms)
 	}
 }
 
+// Gets the latest .slp file from a directory recursively
 fn get_latest_slp_file(cfg Config) ?string {
 	if !exists(cfg.directory) || !is_dir(cfg.directory) {
 		return error("Not exists or is not dir $cfg.directory")
@@ -63,8 +67,31 @@ fn get_latest_slp_file(cfg Config) ?string {
 	return latest_slp_file
 }
 
+// Checks the file every few seconds until the file hasn't been changed.
+fn watch_file(replay_path string) {
+	println("Watching file $replay_path")
+
+	mut last_time_modified := 0
+
+	for {
+		time_modified := file_last_mod_unix(replay_path)
+
+		if last_time_modified == time_modified {
+			break
+		}
+
+		last_time_modified = time_modified
+		time.sleep_ms(watcher_sleep_ms)
+	}
+
+	println("Replay ended.")
+}
+
+// Makes a curl POST request to the server, sending the data from the replay
 fn post_replay(url string, replay_path string) {
-	result := exec('start /b curl -k --location --request POST "$url" \
+	println("Uploading replay...")
+
+	result := exec('curl -k --location --request POST "$url" \
 		--header "Content-Type: application/octet-stream" \
 		--data-binary "@$replay_path"'
 	) or {
