@@ -60,7 +60,8 @@ function processReplay(request: Request, response: Response): void {
 
             if (gameIsUnresolved || anyPlayerIsNotHuman) {
                 response.json({
-                    status: "OK",
+                    status: "error",
+                    error: "Game is unresolved or a player is not human.",
                 });
 
                 return;
@@ -76,6 +77,7 @@ function processReplay(request: Request, response: Response): void {
                     status: "error",
                     error: "Player not found. Get gud, kid.",
                 });
+
                 return;
             }
 
