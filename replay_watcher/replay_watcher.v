@@ -48,29 +48,39 @@ fn main() {
 
 // Gets the latest .slp file from a directory recursively
 fn get_latest_slp_file(directory string) ?string {
-	if !os.exists(directory) || !os.is_dir(directory) {
-		return error("Path doesn't exists or is not directory: ${directory}.")
+	latest := os.exec('"${os.getwd()}\\get_latest_slp_file.exe" "$directory"') or {
+		return error("[ERROR] Unable to launch get_latest_slp_file.exe")
 	}
 
-	slp_files := os.walk_ext(directory, slp_ext)
-	mut latest_slp_file := ""
-	mut latest_modified := 0
-	mut last_modified := 0
-
-	for file_name in slp_files {
-		last_modified = os.file_last_mod_unix(file_name)
-
-		if last_modified > latest_modified {
-			latest_modified = last_modified
-			latest_slp_file = file_name
-		}
+	if latest.output == "" || latest.output.contains("[ERROR]") {
+		return latest.output
 	}
 
-	if latest_slp_file == "" {
-		return error("No replay found.")
-	}
+	return latest.output
 
-	return latest_slp_file
+	// if !os.exists(directory) || !os.is_dir(directory) {
+	// 	return error("Path doesn't exists or is not directory: ${directory}.")
+	// }
+
+	// slp_files := os.walk_ext(directory, slp_ext)
+	// mut latest_slp_file := ""
+	// mut latest_modified := 0
+	// mut last_modified := 0
+
+	// for file_name in slp_files {
+	// 	last_modified = os.file_last_mod_unix(file_name)
+
+	// 	if last_modified > latest_modified {
+	// 		latest_modified = last_modified
+	// 		latest_slp_file = file_name
+	// 	}
+	// }
+
+	// if latest_slp_file == "" {
+	// 	return error("No replay found.")
+	// }
+
+	// return latest_slp_file
 }
 
 // Checks the file every few seconds until the file hasn't been changed.
