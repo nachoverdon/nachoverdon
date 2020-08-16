@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #5f5;">WIN</span>
+<span style="color: #f55;">LOSE</span>
 <br>
-<span>Falco vs Luigi</span>
+<span>Falco vs Falco</span>
 <br>
-<span>Stage: Dream Land N64</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 0:14</span>
+<span>Duration: 0:06</span>
 <br>
 <br>
-<span>Stocks remaining: 4</span><br>
+
 <span>Avg. openings per kill: 0.0</span>
 <br>
-<span>Avg. damage per opening: 30.4%</span>
+<span>Avg. damage per opening: 0.0%</span>
 <br>
-<span>Total damage: 91.3%</span>
+<span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 434.1</span>
+<span>Inputs per minute: 44.6</span>
 <br>
 </p>
 </div>
