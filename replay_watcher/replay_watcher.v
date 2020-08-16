@@ -43,7 +43,7 @@ fn main() {
 // Gets the latest .slp file from a directory recursively
 fn get_latest_slp_file(cfg Config) ?string {
 	if !os.exists(cfg.directory) || !os.is_dir(cfg.directory) {
-		return error("Not exists or is not dir $cfg.directory")
+		return error("Path doesn't exists or is not directory: ${cfg.directory}.")
 	}
 
 	slp_files := os.walk_ext(cfg.directory, slp_ext)
@@ -68,7 +68,7 @@ fn get_latest_slp_file(cfg Config) ?string {
 
 // Checks the file every few seconds until the file hasn't been changed.
 fn watch_file(replay_path string) {
-	println("Watching file $replay_path")
+	println("Watching file $replay_path ...")
 
 	mut last_time_modified := 0
 	mut time_modified := 0
