@@ -29,7 +29,7 @@ fn main() {
 	println("Starting replay watcher...")
 
 	for {
-		slp_file = get_latest_slp_file(cfg) or {
+		slp_file = get_latest_slp_file(cfg.directory) or {
 			println(err)
 			""
 		}
@@ -47,12 +47,12 @@ fn main() {
 }
 
 // Gets the latest .slp file from a directory recursively
-fn get_latest_slp_file(cfg Config) ?string {
-	if !os.exists(cfg.directory) || !os.is_dir(cfg.directory) {
-		return error("Path doesn't exists or is not directory: ${cfg.directory}.")
+fn get_latest_slp_file(directory string) ?string {
+	if !os.exists(directory) || !os.is_dir(directory) {
+		return error("Path doesn't exists or is not directory: ${directory}.")
 	}
 
-	slp_files := os.walk_ext(cfg.directory, slp_ext)
+	slp_files := os.walk_ext(directory, slp_ext)
 	mut latest_slp_file := ""
 	mut latest_modified := 0
 	mut last_modified := 0
@@ -95,7 +95,7 @@ fn watch_file(replay_path string) {
 }
 
 // Makes a curl POST request to the server, sending the data from the replay
-fn post_replay(url string, replay_path string) {
+fn post_replay(url, replay_path string) {
 	println("Uploading replay...")
 
 	result := os.exec('curl -k --location --request POST "$url" \
