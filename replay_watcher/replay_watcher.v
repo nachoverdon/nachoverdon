@@ -15,8 +15,14 @@ const (
 )
 
 fn main() {
-	config_file := os.read_file(config_file_name) or { return }
-	cfg := json.decode(Config, config_file) or { return }
+	config_file := os.read_file(config_file_name) or {
+		println("Cannot find config.json")
+		return
+	}
+	cfg := json.decode(Config, config_file) or {
+		println("Malformed config.json")
+		return
+	}
 	mut slp_file := ""
 	mut last_slp_file := ""
 
