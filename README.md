@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="#f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
-<span>Fox vs Ice Climbers</span>
+<span>Falco vs Luigi</span>
 <br>
-<span>Stage: Yoshi's Story</span>
+<span>Stage: Dream Land N64</span>
 <br>
-<span>Duration: 2:37</span>
+<span>Duration: 0:14</span>
 <br>
-<span>Stocks remaining: 0</span>
 <br>
-<span>Avg. openings per kill: 8</span>
+<span>Stocks remaining: 4</span><br>
+<span>Avg. openings per kill: 0.0</span>
 <br>
-<span>Avg. damage per opening: 14.66124963760376%</span>
+<span>Avg. damage per opening: 30.4%</span>
 <br>
-<span>Total damage: 234.57999420166016%</span>
+<span>Total damage: 91.3%</span>
 <br>
-<span>Inputs per minute: 544.8319594166138</span>
+<span>Inputs per minute: 434.1</span>
 <br>
 </p>
 </div>
