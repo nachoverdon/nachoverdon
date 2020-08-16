@@ -10,7 +10,6 @@ const (
 	slp_ext = "slp"
 	config_file_name = "config.json"
 	sleep_time_ms = 5_000 // 5 seconds
-	watcher_sleep_ms = 1000 // 1 second
 	endpoint = "processReplay"
 )
 
@@ -47,7 +46,6 @@ fn get_latest_slp_file(cfg Config) ?string {
 	}
 
 	slp_files := walk_ext(cfg.directory, slp_ext)
-
 	mut latest_slp_file := ""
 	mut latest_modified := 0
 
@@ -72,16 +70,17 @@ fn watch_file(replay_path string) {
 	println("Watching file $replay_path")
 
 	mut last_time_modified := 0
+	mut time_modified := 0
 
 	for {
-		time_modified := file_last_mod_unix(replay_path)
+		time_modified = file_last_mod_unix(replay_path)
 
 		if last_time_modified == time_modified {
 			break
 		}
 
 		last_time_modified = time_modified
-		time.sleep_ms(watcher_sleep_ms)
+		time.sleep_ms(sleep_time_ms)
 	}
 
 	println("Replay ended.")
