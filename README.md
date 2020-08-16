@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
-<span>Falco vs Falco</span>
+<span>Jigglypuff vs Fox</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Pokémon Stadium</span>
 <br>
-<span>Duration: 0:06</span>
+<span>Duration: 4:38</span>
 <br>
 <br>
-
-<span>Avg. openings per kill: 0.0</span>
+<span>Stocks remaining: 1</span><br>
+<span>Avg. openings per kill: 8.8</span>
 <br>
-<span>Avg. damage per opening: 0.0%</span>
+<span>Avg. damage per opening: 18.1%</span>
 <br>
-<span>Total damage: 0.0%</span>
+<span>Total damage: 632.2%</span>
 <br>
-<span>Inputs per minute: 44.6</span>
+<span>Inputs per minute: 294.3</span>
 <br>
 </p>
 </div>
