@@ -28,7 +28,7 @@
     "@actions/core": "^1.2.4",
     "@slippi/slippi-js": "^5.0.4",
     "@types/express": "^4.17.7",
-    "actions-toolkit": "^5.0.0",
+    "actions-toolkit": "^6.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "moment": "^2.27.0",
