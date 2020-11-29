@@ -105,7 +105,7 @@ fn watch_file(replay_path string) {
 }
 
 // Makes a curl POST request to the server, sending the data from the replay
-fn post_replay(url, replay_path string) {
+fn post_replay(url string, replay_path string) {
 	println("Uploading replay...")
 
 	result := os.exec('curl -k --location --request POST "$url" \
