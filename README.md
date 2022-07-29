@@ -6,21 +6,21 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[ME] Falco vs Link [Floursnail]</span>
+<span>[ME] Falco vs Marth [RaFa(Keyboard)]</span>
 <br>
 <span>Stage: Battlefield</span>
 <br>
-<span>Duration: 1:01</span>
+<span>Duration: 2:44</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 5.0</span>
+<span>Avg. openings per kill: 12.0</span>
 <br>
-<span>Avg. damage per opening: 31.0%</span>
+<span>Avg. damage per opening: 17.6%</span>
 <br>
-<span>Total damage: 154.9%</span>
+<span>Total damage: 421.5%</span>
 <br>
-<span>Inputs per minute: 399.1</span>
+<span>Inputs per minute: 424.4</span>
 <br>
 </p>
 </div>
