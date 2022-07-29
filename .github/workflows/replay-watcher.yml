@@ -21,4 +21,4 @@ jobs:
         v-version: latest
       id: v
     - name: Build replay_watcher.v -prod
-      run: /opt/hostedtoolcache/v/latest/x64/v/v -prod replay_watcher/replay_watcher.v
+      run: /opt/hostedtoolcache/nocturlab/setup-vlang-action/latest/x64/v -prod replay_watcher/replay_watcher.v
