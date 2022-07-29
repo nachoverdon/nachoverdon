@@ -106,7 +106,7 @@ fn is_replay_finished(file File) bool {
 fn post_replay(url string, replay_path string) {
 	println("Uploading replay...")
 
-	result := os.exec('curl -k --location --request POST "$url" \
+	result := os.execute('curl -k --location --request POST "$url" \
 		--header "Content-Type: application/octet-stream" \
 		--data-binary "@$replay_path"'
 	) or {
