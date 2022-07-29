@@ -2,6 +2,7 @@ export type Stats = {
     win: boolean;
     character: Character;
     opponentCharacter: Character;
+    opponentNametag: string;
     stage: string;
     stocksRemaining: number;
     openingsPerKill: number;

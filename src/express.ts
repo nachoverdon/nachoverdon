@@ -49,7 +49,7 @@ function processReplay(request: Request, response: Response): void {
             if (!game)
                 throw new Error("Game is null.");
 
-            const anyPlayerIsNotHuman = game.getSettings().players.find(player => {
+            const anyPlayerIsNotHuman = game.getSettings()!.players.find(player => {
                 return player.type == 1 || player.type == 2 || player.type == 3;
             });
 
@@ -77,6 +77,13 @@ function processReplay(request: Request, response: Response): void {
                 return;
             }
 
+            // Ignore doubles games
+            if (game.getSettings()!.players.length > 2) {
+                sendError(response, "Doubles are not supported.");
+
+                return;
+            }
+
             lastStats = getStats(game, accountIndex);
 
             response.json({
@@ -92,7 +99,7 @@ function processReplay(request: Request, response: Response): void {
 }
 
 function getPlayerIndex(game: SlippiGame): number {
-    const players = game.getMetadata().players;
+    const players = game.getMetadata()!.players;
 
     for (const index in players) {
         // @ts-ignore
@@ -123,30 +130,38 @@ function getWinnerIndex(game: SlippiGame): number {
     const gameEndMethod = gameEnd!.gameEndMethod;
 
     switch (gameEndMethod) {
-        case 1:
-            // @ts-ignore: Object is possibly 'null'.
-            const p1Percent = game.getLatestFrame()?.players[0].post.percent!;
-            // @ts-ignore: Object is possibly 'null'.
-            const p2Percent = game.getLatestFrame()?.players[1].post.percent!;
+        case 1: {
+            const latestFrame = game.getLatestFrame();
+
+            if (!latestFrame)
+                return 0;
+
+            const p1Percent = latestFrame.players[0]!.post.percent!;
+            const p2Percent = latestFrame.players[1]!.post.percent!;
 
             if (p1Percent === p2Percent)
                 return -1;
             else if (p1Percent > p2Percent)
                 return 1;
 
-            return 0
-        case 2:
-            // @ts-ignore: Object is possibly 'null'.
-            const p1StocksRemaining = game.getLatestFrame()?.players[0].post.stocksRemaining!;
-            // @ts-ignore: Object is possibly 'null'.
-            const p2StocksRemaining = game.getLatestFrame()?.players[1].post.stocksRemaining!;
+            return 0;
+        }
+        case 2: {
+            const latestFrame = game.getLatestFrame();
+
+            if (!latestFrame)
+                return -1;
+
+            const p1StocksRemaining = latestFrame.players[0]!.post.stocksRemaining!;
+            const p2StocksRemaining = latestFrame.players[1]!.post.stocksRemaining!;
 
             if (p1StocksRemaining === p2StocksRemaining)
                 return -1;
             if (p1StocksRemaining > p2StocksRemaining)
-                return 0
+                return 0;
 
             return 1;
+        }
         case 7:
             if (gameEnd.lrasInitiatorIndex == 0)
                 return 1;
@@ -163,10 +178,11 @@ function getStats(game: SlippiGame, playerIndex: number): Stats {
     const character = getCharacter(game, playerIndex);
     const opIndex = playerIndex === 0 ? 1 : 0;
     const opCharacter = getCharacter(game, opIndex);
-    const stage = SlippiStages.getStageName(game.getSettings().stageId!);
+    const opNametag = game.getMetadata()!.players![opIndex].names!.netplay ?? game.getMetadata()!.players![opIndex].names!.code!
+    const stage = SlippiStages.getStageName(game.getSettings()!.stageId!);
     // @ts-ignore: Object is possibly 'null'.
     const stocksRemaining = game.getLatestFrame()!.players[playerIndex].post.stocksRemaining!;
-    const stats = game.getStats();
+    const stats = game.getStats()!;
     const overallStats = stats.overall[playerIndex];
     const openingsPerKill = overallStats.openingsPerKill.ratio ? overallStats.openingsPerKill.ratio : 0;
     const totalDamage = overallStats.totalDamage;
@@ -179,6 +195,7 @@ function getStats(game: SlippiGame, playerIndex: number): Stats {
         win: win,
         character: character,
         opponentCharacter: opCharacter,
+        opponentNametag: opNametag,
         stage: stage,
         stocksRemaining: stocksRemaining,
         openingsPerKill: openingsPerKill,
@@ -190,7 +207,7 @@ function getStats(game: SlippiGame, playerIndex: number): Stats {
 }
 
 function getCharacter(game: SlippiGame, playerIndex: number): Character {
-    const characterId = game.getSettings().players[playerIndex].characterId!;
+    const characterId = game.getSettings()!.players[playerIndex].characterId!;
     const name = SlippiCharacters.getCharacterName(characterId);
 
     return {
