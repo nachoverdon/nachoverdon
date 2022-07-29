@@ -6,21 +6,21 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>Jigglypuff vs Luigi</span>
+<span>Falco vs Fox</span>
 <br>
-<span>Stage: Dream Land N64</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 2:56</span>
+<span>Duration: 2:25</span>
 <br>
 <br>
 <span>Stocks remaining: 1</span><br>
-<span>Avg. openings per kill: 5.0</span>
+<span>Avg. openings per kill: 3.5</span>
 <br>
-<span>Avg. damage per opening: 24.8%</span>
+<span>Avg. damage per opening: 27.2%</span>
 <br>
-<span>Total damage: 496.1%</span>
+<span>Total damage: 381.0%</span>
 <br>
-<span>Inputs per minute: 326.8</span>
+<span>Inputs per minute: 439.3</span>
 <br>
 </p>
 </div>
