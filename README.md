@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #5f5;">WIN</span>
+<span style="color: #f55;">LOSE</span>
 <br>
-<span>Falco vs Fox</span>
+<span>[ME] Falco vs Marth [RaFa(Keyboard)]</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Battlefield</span>
 <br>
-<span>Duration: 2:25</span>
+<span>Duration: 2:44</span>
 <br>
 <br>
-<span>Stocks remaining: 1</span><br>
-<span>Avg. openings per kill: 3.5</span>
+
+<span>Avg. openings per kill: 12.0</span>
 <br>
-<span>Avg. damage per opening: 27.2%</span>
+<span>Avg. damage per opening: 17.6%</span>
 <br>
-<span>Total damage: 381.0%</span>
+<span>Total damage: 421.5%</span>
 <br>
-<span>Inputs per minute: 439.3</span>
+<span>Inputs per minute: 424.4</span>
 <br>
 </p>
 </div>
