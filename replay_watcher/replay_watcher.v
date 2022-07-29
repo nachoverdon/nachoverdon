@@ -109,10 +109,12 @@ fn post_replay(url string, replay_path string) {
 	result := os.execute('curl -k --location --request POST "$url" \
 		--header "Content-Type: application/octet-stream" \
 		--data-binary "@$replay_path"'
-	) or {
-		println("Unable to do POST request to $url: $err")
+	)
+
+	if result.exit_code != 0 {
+		println("Unable to do POST request to $url: $result.output")
 		return
 	}
 
-	println("Response returned with status code: $result.exit_code: $result.output")
+	println("Replay uploaded.")
 }
