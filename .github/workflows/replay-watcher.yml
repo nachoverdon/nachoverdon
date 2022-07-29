@@ -21,4 +21,4 @@ jobs:
         version: 'weekly.2022.30'
       id: v
     - name: Build replay_watcher.v -prod
-      run: /opt/hostedtoolcache/v/0.3.0/x64 -prod replay_watcher/replay_watcher.v
+      run: /opt/hostedtoolcache/v/0.3.0/x64/v -prod replay_watcher/replay_watcher.v
