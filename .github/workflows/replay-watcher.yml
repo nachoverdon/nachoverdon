@@ -16,9 +16,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up V version latest
-      uses: nocturlab/setup-vlang-action@v1
+      uses: vlang/setup-v@v1.1
       with:
-        v-version: latest
+        version: 'weekly.2022.30'
       id: v
     - name: Build replay_watcher.v -prod
       run: /opt/hostedtoolcache/nocturlab/setup-vlang-action/latest/x64/v -prod replay_watcher/replay_watcher.v
