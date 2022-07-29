@@ -114,7 +114,6 @@ function getPlayerIndex(game: SlippiGame): number {
  *
  * @param game
  */
-// @ts-ignore: Object is possibly 'null'.
 function getWinnerIndex(game: SlippiGame): number {
     const gameEnd = game.getGameEnd();
 
@@ -125,7 +124,9 @@ function getWinnerIndex(game: SlippiGame): number {
 
     switch (gameEndMethod) {
         case 1:
+            // @ts-ignore: Object is possibly 'null'.
             const p1Percent = game.getLatestFrame()?.players[0].post.percent!;
+            // @ts-ignore: Object is possibly 'null'.
             const p2Percent = game.getLatestFrame()?.players[1].post.percent!;
 
             if (p1Percent === p2Percent)
@@ -135,7 +136,9 @@ function getWinnerIndex(game: SlippiGame): number {
 
             return 0
         case 2:
+            // @ts-ignore: Object is possibly 'null'.
             const p1StocksRemaining = game.getLatestFrame()?.players[0].post.stocksRemaining!;
+            // @ts-ignore: Object is possibly 'null'.
             const p2StocksRemaining = game.getLatestFrame()?.players[1].post.stocksRemaining!;
 
             if (p1StocksRemaining === p2StocksRemaining)
@@ -155,13 +158,13 @@ function getWinnerIndex(game: SlippiGame): number {
     }
 }
 
-// @ts-ignore: Object is possibly 'null'.
 function getStats(game: SlippiGame, playerIndex: number): Stats {
     const win = getWinnerIndex(game) === playerIndex;
     const character = getCharacter(game, playerIndex);
     const opIndex = playerIndex === 0 ? 1 : 0;
     const opCharacter = getCharacter(game, opIndex);
     const stage = SlippiStages.getStageName(game.getSettings().stageId!);
+    // @ts-ignore: Object is possibly 'null'.
     const stocksRemaining = game.getLatestFrame()!.players[playerIndex].post.stocksRemaining!;
     const stats = game.getStats();
     const overallStats = stats.overall[playerIndex];
