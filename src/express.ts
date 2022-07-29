@@ -114,6 +114,7 @@ function getPlayerIndex(game: SlippiGame): number {
  *
  * @param game
  */
+// @ts-ignore: Object is possibly 'null'.
 function getWinnerIndex(game: SlippiGame): number {
     const gameEnd = game.getGameEnd();
 
@@ -154,6 +155,7 @@ function getWinnerIndex(game: SlippiGame): number {
     }
 }
 
+// @ts-ignore: Object is possibly 'null'.
 function getStats(game: SlippiGame, playerIndex: number): Stats {
     const win = getWinnerIndex(game) === playerIndex;
     const character = getCharacter(game, playerIndex);
