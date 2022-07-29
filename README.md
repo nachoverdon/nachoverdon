@@ -6,7 +6,7 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[ME] Falco vs Marth [RaFa(Keyboard)]</span>
+<span>[bazoo] Falco vs Marth [RaFa(Keyboard)]</span>
 <br>
 <span>Stage: Battlefield</span>
 <br>
