@@ -6,7 +6,7 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>Falco vs Fox</span>
+<span>[ME] Falco vs Fox [undefined]</span>
 <br>
 <span>Stage: Fountain of Dreams</span>
 <br>
