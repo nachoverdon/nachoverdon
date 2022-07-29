@@ -1,6 +1,7 @@
 import json
 import time
-import os
+import os { File }
+import encoding.binary { big_endian_u32 }
 
 struct Config {
 	directory string
@@ -10,7 +11,7 @@ struct Config {
 const (
 	slp_ext = "slp"
 	config_file_name = "config.json"
-	sleep_time_ms = 5_000 // 5 seconds
+	sleep_time = 5 // 5 seconds
 	endpoint = "processReplay"
 )
 
@@ -30,7 +31,7 @@ fn main() {
 
 	for {
 		slp_file = get_latest_slp_file(cfg.directory) or {
-			println(err)
+			println(err.msg())
 			""
 		}
 
@@ -40,68 +41,65 @@ fn main() {
 			post_replay(cfg.url + endpoint, slp_file)
 		}
 
-		println("Waiting ${sleep_time_ms / 1000} seconds for new replays...")
+		println("Waiting ${sleep_time} seconds for new replays...")
 
-		time.sleep_ms(sleep_time_ms)
+		time.sleep(sleep_time * time.second)
 	}
 }
 
 // Gets the latest .slp file from a directory recursively
 fn get_latest_slp_file(directory string) ?string {
-	latest := os.exec('"${os.getwd()}\\get_latest_slp_file.exe" "$directory"') or {
-		return error("[ERROR] Unable to launch get_latest_slp_file.exe")
+	if !os.exists(directory) || !os.is_dir(directory) {
+		return error("Path doesn't exists or is not directory: ${directory}.")
 	}
 
-	if latest.output == "" || latest.output.contains("[ERROR]") {
-		return latest.output
+	slp_files := os.walk_ext(directory, slp_ext)
+	mut latest_slp_file := ""
+	mut latest_modified := i64(0)
+	mut last_modified := i64(0)
+
+	for file_name in slp_files {
+		last_modified = os.file_last_mod_unix(file_name)
+
+		if last_modified > latest_modified {
+			latest_modified = last_modified
+			latest_slp_file = file_name
+		}
 	}
 
-	return latest.output
+	if latest_slp_file == "" {
+		return error("No replay found.")
+	}
 
-	// if !os.exists(directory) || !os.is_dir(directory) {
-	// 	return error("Path doesn't exists or is not directory: ${directory}.")
-	// }
-
-	// slp_files := os.walk_ext(directory, slp_ext)
-	// mut latest_slp_file := ""
-	// mut latest_modified := 0
-	// mut last_modified := 0
-
-	// for file_name in slp_files {
-	// 	last_modified = os.file_last_mod_unix(file_name)
-
-	// 	if last_modified > latest_modified {
-	// 		latest_modified = last_modified
-	// 		latest_slp_file = file_name
-	// 	}
-	// }
-
-	// if latest_slp_file == "" {
-	// 	return error("No replay found.")
-	// }
-
-	// return latest_slp_file
+	return latest_slp_file
 }
 
 // Checks the file every few seconds until the file hasn't been changed.
 fn watch_file(replay_path string) {
 	println("Watching file $replay_path ...")
 
-	mut last_time_modified := 0
-	mut time_modified := 0
+	mut file := os.open(replay_path) or {
+		println("Cannot open file: $replay_path")
+		return
+	}
+	defer { file.close() }
 
-	for {
-		time_modified = os.file_last_mod_unix(replay_path)
-
-		if last_time_modified == time_modified {
-			break
-		}
-
-		last_time_modified = time_modified
-		time.sleep_ms(sleep_time_ms)
+	for !is_replay_finished(file) {
+		time.sleep(sleep_time * time.second)
 	}
 
 	println("Replay ended.")
+}
+
+// Read 4 bytes from the given file at the given position as a big endian u32
+fn get_u32_at(file File, pos u64) u32 {
+	return big_endian_u32(file.read_bytes_at(4, pos))
+}
+
+// Checks if the replays has finishied by looking at the raw data length
+fn is_replay_finished(file File) bool {
+	// 11 is the offset until the length of the raw data
+	return get_u32_at(file, 11) != 0
 }
 
 // Makes a curl POST request to the server, sending the data from the replay
