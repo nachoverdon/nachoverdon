@@ -1,10 +1,6 @@
-import { Toolkit } from "actions-toolkit";
-import { OutputType } from "actions-toolkit/lib/outputs";
-import { InputType } from "actions-toolkit/lib/inputs";
 import fs from "fs";
 import { Stats } from "./stats";
 import { execCommand } from "./util";
-// import { getInput } from "@actions/core";
 
 async function commitFile() {
   await execCommand("git", [
@@ -19,16 +15,14 @@ async function commitFile() {
   await execCommand("git", ["push"]);
 }
 
-export function updateReadme(stats: Stats): void {
-    Toolkit.run(
-      async (tools: Toolkit<InputType, OutputType>) => {
-        let readmeContent = fs.readFileSync("./README.md", "utf-8");
+export async function updateReadme(stats: Stats): Promise<void> {
+  let readmeContent = fs.readFileSync("./README.md", "utf-8");
 
-        if (!readmeContent.includes("<!--START_SECTION:slippi_stats-->") ||
-            !readmeContent.includes("<!--END_SECTION:slippi_stats-->")
-        ) return;
+  if (!readmeContent.includes("<!--START_SECTION:slippi_stats-->") ||
+      !readmeContent.includes("<!--END_SECTION:slippi_stats-->")
+  ) return;
 
-        const statsHtml =
+  const statsHtml =
 `
 <div>
 <h1>Latest match stats:</h1>
@@ -55,24 +49,15 @@ ${stats.win ? `<span>Stocks remaining: ${stats.stocksRemaining}</span><br>` : ""
 </div>
 `
 
-          readmeContent = readmeContent.replace(/<!--START_SECTION:slippi_stats-->(.|[\r\n])*<!--END_SECTION:slippi_stats-->/gm,
-              `<!--START_SECTION:slippi_stats-->${statsHtml}<!--END_SECTION:slippi_stats-->`);
+  readmeContent = readmeContent.replace(/<!--START_SECTION:slippi_stats-->(.|[\r\n])*<!--END_SECTION:slippi_stats-->/gm,
+      `<!--START_SECTION:slippi_stats-->${statsHtml}<!--END_SECTION:slippi_stats-->`);
 
-          fs.writeFileSync("./README.md", readmeContent);
+  fs.writeFileSync("./README.md", readmeContent);
 
-          try {
-            await commitFile();
-          } catch (err) {
-            tools.log.debug("Something went wrong");
-            // @ts-ignore
-            return tools.exit.failure(err);
-          }
+  try {
+    await commitFile();
+  } catch (err) {
+    console.error("Something went wrong", err);
+  }
 
-          tools.exit.success("Updated.");
-      },
-    {
-        event: ["schedule", "workflow_dispatch"],
-        secrets: ["GITHUB_TOKEN"],
-      }
-    )
 }

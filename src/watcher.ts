@@ -9,17 +9,17 @@ import { Ports, SlippiGame, characters as SlippiCharacters, stages as SlippiStag
 import { Character, Stats } from "./stats";
 import moment from "moment/moment";
 import { execCommandWithResult, sleep } from "./util";
-// import { updateReadme } from "./github"
+import { updateReadme } from "./github"
 
 const ADDRESS = "127.0.0.1";
 const PORT = Ports.DEFAULT;
 const SLIPPI_ACCOUNTS = process.env.SLIPPI_ACCOUNTS!.split(",");
 const SLIPPI_REPLAYS = process.env.SLIPPI_REPLAYS!;
+let lastReplay = "";
 
 (async () => {
   while (true) {
     while (!await isSlippiRunning()) {
-      console.log("Waiting for Slippi...");
       await sleep(5000);
     }
 
@@ -33,19 +33,17 @@ async function processLatestReplay() {
   slpFiles = getAllSlpFiles(SLIPPI_REPLAYS, slpFiles);
   const mostRecentReplay = getMostRecentSlpFile(slpFiles);
 
-  // TODO: Get latest replay. If different from last one, process replay
-  console.log(`Most recent replay: ${mostRecentReplay}`);
-
-  if (!mostRecentReplay) {
+  if (!mostRecentReplay || mostRecentReplay == lastReplay) {
     return;
   }
+
+  lastReplay = mostRecentReplay;
 
   try {
     const stats = processReplay(mostRecentReplay);
 
     if (stats) {
-      console.log("STATS!!!", stats);
-      // updateReadme(stats!);
+      await updateReadme(stats!);
     }
   } catch (err) {
     console.error("Unable to get game stats", err);
@@ -271,6 +269,8 @@ async function waitForReplayEnd() {
   while (shouldKeepWaiting) {
     await sleep(5000);
   }
+
+  stream.end();
 }
 
 async function isSlippiRunning(): Promise<boolean> {
