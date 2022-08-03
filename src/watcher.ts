@@ -11,6 +11,12 @@ import moment from "moment/moment";
 import { execCommandWithResult, sleep } from "./util";
 import { updateReadme } from "./github"
 
+(() => {
+  if (!process.env.SLIPPI_ACCOUNTS || !process.env.SLIPPI_REPLAYS || !process.env.GH_REPO_PATH) {
+    throw new Error("Some .env variables where not defined");
+  }
+})();
+
 const ADDRESS = "127.0.0.1";
 const PORT = Ports.DEFAULT;
 const SLIPPI_ACCOUNTS = process.env.SLIPPI_ACCOUNTS!.split(",");

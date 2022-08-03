@@ -32,7 +32,7 @@
     "type-check": "tsc --build tsconfig.json",
     "prewebpack": "rimraf build && rimraf dist",
     "webpack": "webpack",
-    "nexe": "nexe -t windows-x64-14.15.3 -o dist/watcher.exe && cp \"../.env\" \"dist/\" ",
+    "nexe": "nexe -t windows-x64-14.15.3 -o dist/watcher.exe && cp ../.env dist/.env ",
     "build": "npm run type-check && npm run webpack && npm run nexe",
     "check-msbuild": "ts-node -e \"require(\"\"./launcher/launcherCompiler\"\").checkMsbuildInPath(true)\"",
     "rebuild-launcher": "msbuild launcher/launcher.csproj",

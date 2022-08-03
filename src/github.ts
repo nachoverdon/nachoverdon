@@ -1,6 +1,9 @@
 import fs from "fs";
 import { Stats } from "./stats";
 import { execCommand } from "./util";
+import { join } from "path";
+
+const GH_REPO_PATH = process.env.GH_REPO_PATH!
 
 async function commitFile() {
   await execCommand("git", [
@@ -10,13 +13,13 @@ async function commitFile() {
     "readmebot@nachoverdon.com",
   ]);
   await execCommand("git", ["config", "--global", "user.name", "readme-bot"]);
-  await execCommand("git", ["add", "README.md"]);
+  await execCommand("git", ["add", join(GH_REPO_PATH, "README.md")]);
   await execCommand("git", ["commit", "-m", "Update README.md with Slippi stats"]);
   await execCommand("git", ["push"]);
 }
 
 export async function updateReadme(stats: Stats): Promise<void> {
-  let readmeContent = fs.readFileSync("./README.md", "utf-8");
+  let readmeContent = fs.readFileSync(join(GH_REPO_PATH, "README.md"), "utf-8");
 
   if (!readmeContent.includes("<!--START_SECTION:slippi_stats-->") ||
       !readmeContent.includes("<!--END_SECTION:slippi_stats-->")
@@ -52,7 +55,7 @@ ${stats.win ? `<span>Stocks remaining: ${stats.stocksRemaining}</span><br>` : ""
   readmeContent = readmeContent.replace(/<!--START_SECTION:slippi_stats-->(.|[\r\n])*<!--END_SECTION:slippi_stats-->/gm,
       `<!--START_SECTION:slippi_stats-->${statsHtml}<!--END_SECTION:slippi_stats-->`);
 
-  fs.writeFileSync("./README.md", readmeContent);
+  fs.writeFileSync(join(GH_REPO_PATH, "README.md"), readmeContent);
 
   try {
     await commitFile();
