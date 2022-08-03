@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Falco vs Marth [RaFa(Keyboard)]</span>
+<span>[bazoo] Dr. Mario vs Peach [opponent]</span>
 <br>
-<span>Stage: Battlefield</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 2:44</span>
+<span>Duration: 3:53</span>
 <br>
 <br>
-
+<span>Stocks remaining: 2</span><br>
 <span>Avg. openings per kill: 12.0</span>
 <br>
-<span>Avg. damage per opening: 17.6%</span>
+<span>Avg. damage per opening: 12.3%</span>
 <br>
-<span>Total damage: 421.5%</span>
+<span>Total damage: 442.6%</span>
 <br>
-<span>Inputs per minute: 424.4</span>
+<span>Inputs per minute: 367.3</span>
 <br>
 </p>
 </div>
