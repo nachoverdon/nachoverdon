@@ -8,7 +8,7 @@
 <br>
 <span>[bazoo] Pichu vs Falco [opponent]</span>
 <br>
-<span>Stage: Pokémon Stadium</span>
+<span>Stage: Battlefield</span>
 <br>
 <span>Duration: 0:00</span>
 <br>
@@ -20,7 +20,7 @@
 <br>
 <span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 230.8</span>
+<span>Inputs per minute: 281.3</span>
 <br>
 </p>
 </div>
