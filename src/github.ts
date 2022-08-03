@@ -6,16 +6,13 @@ import { join } from "path";
 const GH_REPO_PATH = process.env.GH_REPO_PATH!
 
 async function commitFile() {
-  await execCommand("git", [
-    "config",
-    "--global",
-    "user.email",
-    "readmebot@nachoverdon.com",
-  ]);
-  await execCommand("git", ["config", "--global", "user.name", "readme-bot"]);
   await execCommand("git", ["add", join(GH_REPO_PATH, "README.md")]);
   await execCommand("git", ["commit", "-m", "Update README.md with Slippi stats"]);
-  await execCommand("git", ["push"]);
+  execCommand("git", ["push"])
+    .then(async () => {
+      await execCommand("git", ["pull"]);
+    })
+    .catch(console.error);
 }
 
 export async function updateReadme(stats: Stats): Promise<void> {
