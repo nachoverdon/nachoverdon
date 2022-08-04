@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Pichu vs Falco [opponent]</span>
+<span>[bazoo] Falco vs Marth [opponent]</span>
 <br>
-<span>Stage: Battlefield</span>
+<span>Stage: Pokémon Stadium</span>
 <br>
-<span>Duration: 0:00</span>
+<span>Duration: 3:39</span>
 <br>
 <br>
-
-<span>Avg. openings per kill: 0.0</span>
+<span>Stocks remaining: 1</span><br>
+<span>Avg. openings per kill: 8.0</span>
 <br>
-<span>Avg. damage per opening: 0.0%</span>
+<span>Avg. damage per opening: 19.5%</span>
 <br>
-<span>Total damage: 0.0%</span>
+<span>Total damage: 624.0%</span>
 <br>
-<span>Inputs per minute: 281.3</span>
+<span>Inputs per minute: 507.1</span>
 <br>
 </p>
 </div>
