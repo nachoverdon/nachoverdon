@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Falco vs Marth [opponent]</span>
+<span>[bazoo] Falco vs Sheik [opponent]</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Battlefield</span>
 <br>
-<span>Duration: 2:47</span>
+<span>Duration: 2:01</span>
 <br>
 <br>
-
-<span>Avg. openings per kill: 7.5</span>
+<span>Stocks remaining: 4</span><br>
+<span>Avg. openings per kill: 3.8</span>
 <br>
-<span>Avg. damage per opening: 24.8%</span>
+<span>Avg. damage per opening: 32.8%</span>
 <br>
-<span>Total damage: 372.3%</span>
+<span>Total damage: 491.7%</span>
 <br>
-<span>Inputs per minute: 449.6</span>
+<span>Inputs per minute: 539.0</span>
 <br>
 </p>
 </div>
