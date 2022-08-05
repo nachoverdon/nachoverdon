@@ -6,21 +6,21 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Falco vs Sheik [opponent]</span>
+<span>[bazoo] Fox vs Fox [opponent]</span>
 <br>
-<span>Stage: Battlefield</span>
+<span>Stage: Pokémon Stadium</span>
 <br>
-<span>Duration: 2:01</span>
+<span>Duration: 2:43</span>
 <br>
 <br>
-<span>Stocks remaining: 4</span><br>
-<span>Avg. openings per kill: 3.8</span>
+<span>Stocks remaining: 2</span><br>
+<span>Avg. openings per kill: 5.0</span>
 <br>
-<span>Avg. damage per opening: 32.8%</span>
+<span>Avg. damage per opening: 19.4%</span>
 <br>
-<span>Total damage: 491.7%</span>
+<span>Total damage: 388.5%</span>
 <br>
-<span>Inputs per minute: 539.0</span>
+<span>Inputs per minute: 439.2</span>
 <br>
 </p>
 </div>
