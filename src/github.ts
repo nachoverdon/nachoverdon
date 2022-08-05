@@ -2,6 +2,7 @@ import fs from "fs";
 import { Stats } from "./stats";
 import { execCommand } from "./util";
 import { join } from "path";
+import { logger } from "./watcher";
 
 const GH_REPO_PATH = process.env.GH_REPO_PATH!
 const GH_CONFIG_NAME = process.env.GH_CONFIG_NAME!
@@ -15,7 +16,15 @@ async function commitFile() {
     await execCommand("git", ["commit", "-m", "Update README.md with Slippi stats"]);
     await execCommand("git", ["push"])
     await execCommand("git", ["pull"]);
-  } catch (ignored) {}
+  } catch (err) {
+    logger.log("error","Couldn't perform a git command.");
+
+    if (typeof err === "string") {
+      logger.log("error", err);
+    } else if (err instanceof Error) {
+      logger.log("error", err.message);
+    }
+  }
   // Set original credentials back
   await execCommand("git", ["config", "--local", "user.email", GH_CONFIG_MAIL]);
   await execCommand("git", ["config", "--local", "user.name", GH_CONFIG_NAME]);

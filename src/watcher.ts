@@ -10,6 +10,7 @@ import { Character, Stats } from "./stats";
 import moment from "moment/moment";
 import { execCommandWithResult, sleep } from "./util";
 import { updateReadme } from "./github"
+import * as winston from "winston";
 
 (() => {
   if (!process.env.SLIPPI_ACCOUNTS || !process.env.SLIPPI_REPLAYS || !process.env.GH_REPO_PATH
@@ -17,6 +18,32 @@ import { updateReadme } from "./github"
     throw new Error("Some .env variables where not defined");
   }
 })();
+
+// App Name
+const AppName: string = "watcher";
+
+// Args (ignore exe + js)
+const argv: string[] = process.argv.slice(2);
+
+// Logger init
+const { combine, timestamp, printf, label } = winston.format;
+const filename: string = `${AppName}.log`;
+const transports = {
+  file: new winston.transports.File({ filename: filename })
+};
+transports.file.level = "debug";
+export const logger: winston.Logger = winston.createLogger({
+  level: "debug",
+  format: combine(
+    label({ label: "[my-label]" }),
+    timestamp({ format: "YYYY-MM-DD HH:mm:ss.SSS" }),
+    printf((info) => `${info.timestamp} [${info.level.toUpperCase()}] ${info.message}`)
+  ),
+  transports: [transports.file]
+});
+
+// Log message
+logger.log("info", `"${AppName}" started with ${argv ? argv.join("; ") : "no args"}`);
 
 const ADDRESS = "127.0.0.1";
 const PORT = Ports.DEFAULT;
