@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #5f5;">WIN</span>
+<span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Fox vs Fox [opponent]</span>
+<span>[bazoo] Mr. Game & Watch vs Captain Falcon [opponent]</span>
 <br>
-<span>Stage: Pokémon Stadium</span>
+<span>Stage: Final Destination</span>
 <br>
-<span>Duration: 2:43</span>
+<span>Duration: 0:01</span>
 <br>
 <br>
-<span>Stocks remaining: 2</span><br>
-<span>Avg. openings per kill: 5.0</span>
+
+<span>Avg. openings per kill: 0.0</span>
 <br>
-<span>Avg. damage per opening: 19.4%</span>
+<span>Avg. damage per opening: 0.0%</span>
 <br>
-<span>Total damage: 388.5%</span>
+<span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 439.2</span>
+<span>Inputs per minute: 276.9</span>
 <br>
 </p>
 </div>
