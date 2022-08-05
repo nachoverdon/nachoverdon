@@ -40,7 +40,11 @@ logger.log("info", `"${AppName}" started with ${argv.length ? argv.join("; ") : 
     }
 
     await waitForReplayEnd();
-    await processLatestReplay();
+    const stats = await processLatestReplay();
+
+    if (stats) {
+      await updateReadme(stats!);
+    }
   }
 })();
 
@@ -65,26 +69,24 @@ function setupLogger(): winston.Logger {
   });
 }
 
-async function processLatestReplay() {
+async function processLatestReplay(): Promise<Stats | null> {
   let slpFiles: string[] = [];
   slpFiles = getAllSlpFiles(SLIPPI_REPLAYS, slpFiles);
   const mostRecentReplay = getMostRecentSlpFile(slpFiles);
 
   if (!mostRecentReplay || mostRecentReplay == lastReplay) {
-    return;
+    return null;
   }
 
   lastReplay = mostRecentReplay;
 
   try {
-    const stats = processReplay(mostRecentReplay);
-
-    if (stats) {
-      await updateReadme(stats!);
-    }
+    return processReplay(mostRecentReplay);
   } catch (err) {
     console.error("Unable to get game stats", err);
   }
+
+  return null;
 }
 
 function getMostRecentSlpFile(slpFiles: string[]): string | null {
