@@ -191,7 +191,7 @@ function getStats(game: SlippiGame, playerIndex: number): Stats {
   const character = getCharacter(game, playerIndex);
   const opIndex = playerIndex === 0 ? 1 : 0;
   const opCharacter = getCharacter(game, opIndex);
-  // const opNametag = game.getMetadata()!.players![opIndex].names!.netplay ?? game.getMetadata()!.players![opIndex].names!.code!
+  const opNametag = game.getMetadata()!.players![opIndex].names!.netplay ?? game.getMetadata()!.players![opIndex].names!.code!
   const stage = SlippiStages.getStageName(game.getSettings()!.stageId!);
   const stocksRemaining = game.getLatestFrame()!.players[playerIndex]!.post.stocksRemaining!;
   const stats = game.getStats()!;
@@ -207,7 +207,7 @@ function getStats(game: SlippiGame, playerIndex: number): Stats {
     win: win,
     character: character,
     opponentCharacter: opCharacter,
-    // opponentNameTag: opNametag,
+    opponentNameTag: opNametag,
     stage: stage,
     stocksRemaining: stocksRemaining,
     openingsPerKill: openingsPerKill,

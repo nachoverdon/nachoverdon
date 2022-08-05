@@ -44,7 +44,7 @@ export async function updateReadme(stats: Stats): Promise<void> {
 <p>
 <span style="color: ${stats.win ? "#5f5" : "#f55"};">${stats.win ? "WIN" : "LOSE"}</span>
 <br>
-<span>[bazoo] ${stats.character.name} vs ${stats.opponentCharacter.name} [opponent]</span>
+<span>[bazoo] ${stats.character.name} vs ${stats.opponentCharacter.name} [${stats.opponentNameTag}]</span>
 <br>
 <span>Stage: ${stats.stage}</span>
 <br>
