@@ -6,9 +6,9 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Mr. Game & Watch vs Marth [opponent]</span>
+<span>[bazoo] Mr. Game & Watch vs Sheik [I love you]</span>
 <br>
-<span>Stage: Battlefield</span>
+<span>Stage: Yoshi's Story</span>
 <br>
 <span>Duration: 0:01</span>
 <br>
@@ -20,7 +20,7 @@
 <br>
 <span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 353.6</span>
+<span>Inputs per minute: 419.4</span>
 <br>
 </p>
 </div>
