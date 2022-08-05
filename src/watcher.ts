@@ -43,7 +43,7 @@ export const logger: winston.Logger = winston.createLogger({
 });
 
 // Log message
-logger.log("info", `"${AppName}" started with ${argv ? argv.join("; ") : "no args"}`);
+logger.log("info", `"${AppName}" started with ${argv.length ? argv.join("; ") : "no args"}`);
 
 const ADDRESS = "127.0.0.1";
 const PORT = Ports.DEFAULT;
