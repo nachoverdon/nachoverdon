@@ -6,9 +6,9 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Mr. Game & Watch vs Captain Falcon [opponent]</span>
+<span>[bazoo] Mr. Game & Watch vs Marth [opponent]</span>
 <br>
-<span>Stage: Final Destination</span>
+<span>Stage: Battlefield</span>
 <br>
 <span>Duration: 0:01</span>
 <br>
@@ -20,7 +20,7 @@
 <br>
 <span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 276.9</span>
+<span>Inputs per minute: 353.6</span>
 <br>
 </p>
 </div>
