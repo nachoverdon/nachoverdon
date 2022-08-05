@@ -1,6 +1,6 @@
 <div align="center">
     <img src="https://github.com/nachoverdon/nachoverdon/blob/master/profile.svg" width="838" height="530"/>
-    <!--START_SECTION:slippi_stats-->
+<!--START_SECTION:slippi_stats-->
 <div>
 <h1>Latest match stats:</h1>
 <p>

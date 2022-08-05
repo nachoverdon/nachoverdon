@@ -4,4 +4,6 @@ You might need to have [NASM](https://www.nasm.us/pub/nasm/stable/) installed fi
 ```
 cd watcher
 npm run build
+cd ..
+npm run build
 ```

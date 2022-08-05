@@ -4,15 +4,21 @@ import { execCommand } from "./util";
 import { join } from "path";
 
 const GH_REPO_PATH = process.env.GH_REPO_PATH!
+const GH_CONFIG_NAME = process.env.GH_CONFIG_NAME!
+const GH_CONFIG_MAIL = process.env.GH_CONFIG_MAIL!
 
 async function commitFile() {
-  await execCommand("git", ["add", join(GH_REPO_PATH, "README.md")]);
-  await execCommand("git", ["commit", "-m", "Update README.md with Slippi stats"]);
-  execCommand("git", ["push"])
-    .then(async () => {
-      await execCommand("git", ["pull"]);
-    })
-    .catch(console.error);
+  try {
+    await execCommand("git", ["config", "--local", "user.email", `${GH_CONFIG_NAME}@readmebot.com`]);
+    await execCommand("git", ["config", "--local", "user.name", "readme-bot"]);
+    await execCommand("git", ["add", join(GH_REPO_PATH, "README.md")]);
+    await execCommand("git", ["commit", "-m", "Update README.md with Slippi stats"]);
+    await execCommand("git", ["push"])
+    await execCommand("git", ["pull"]);
+  } catch (ignored) {}
+  // Set original credentials back
+  await execCommand("git", ["config", "--local", "user.email", GH_CONFIG_MAIL]);
+  await execCommand("git", ["config", "--local", "user.name", GH_CONFIG_NAME]);
 }
 
 export async function updateReadme(stats: Stats): Promise<void> {
