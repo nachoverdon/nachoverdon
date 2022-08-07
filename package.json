@@ -11,8 +11,7 @@
     "compile": "tsc",
     "start": "npm run compile && node js/watcher.js",
     "server": "npm run compile && node js/video_server.js",
-    "build": "npm run compile && npm run nexe",
-    "nexe": "nexe -t windows-x64-14.15.3 -o watcher/dist/watcher.exe js/watcher.js && cp .env watcher/dist/.env",
+    "nexe": "npm run compile && nexe -t windows-x64-14.15.3 -o watcher/dist/watcher.exe js/watcher.js && cp .env watcher/dist/.env",
     "postinstall": "npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
