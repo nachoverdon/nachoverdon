@@ -10,7 +10,7 @@
 <br>
 <span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 0:01</span>
+<span>Duration: 0:00</span>
 <br>
 <br>
 
@@ -20,7 +20,7 @@
 <br>
 <span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 207.7</span>
+<span>Inputs per minute: 327.3</span>
 <br>
 </p>
 </div>
