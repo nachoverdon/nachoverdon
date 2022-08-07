@@ -6,11 +6,11 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Ness vs Samus [mule]</span>
+<span>[bazoo] Ness vs Ganondorf [twitch_elzo1990]</span>
 <br>
-<span>Stage: Dream Land N64</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 0:00</span>
+<span>Duration: 0:01</span>
 <br>
 <br>
 
@@ -20,7 +20,7 @@
 <br>
 <span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 266.7</span>
+<span>Inputs per minute: 207.7</span>
 <br>
 </p>
 </div>
