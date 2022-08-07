@@ -6,9 +6,9 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Ness vs Samus [Rabbitalex]</span>
+<span>[bazoo] Ness vs Fox [Ceres]</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Final Destination</span>
 <br>
 <span>Duration: 0:00</span>
 <br>
@@ -20,7 +20,7 @@
 <br>
 <span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 308.6</span>
+<span>Inputs per minute: 291.9</span>
 <br>
 </p>
 </div>
