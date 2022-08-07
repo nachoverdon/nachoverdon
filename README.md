@@ -26,4 +26,4 @@
 </div>
 <!--END_SECTION:slippi_stats-->
 </div>
-https://152.70.188.109/last_match.mp4
+https://www.bazoomods.com/last_match.mp4
