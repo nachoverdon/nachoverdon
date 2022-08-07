@@ -64,10 +64,14 @@ const videoUpload = multer({
   }
 })
 
+app.get("/", async (_, res) => {
+  return res.send("Check my GitHub profile: https://github.com/nachoverdon/nachoverdon");
+});
+
 app.get("/last_match.mp4", async (_, res) => {
   // Gets the most recent video either by getting the stored name or by checking the video files
   if (!last_match_file && !(last_match_file = await findLastMatch())) {
-    return res.status(404);
+    return res.status(404).send({ error: "No file yet." });
   }
 
   // Serve the file
