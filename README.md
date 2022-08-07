@@ -6,21 +6,21 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Sheik vs Falco [FunKa]</span>
+<span>[bazoo] Captain Falcon vs Marth [AE.]</span>
 <br>
-<span>Stage: Final Destination</span>
+<span>Stage: Battlefield</span>
 <br>
-<span>Duration: 3:14</span>
+<span>Duration: 2:36</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 9.7</span>
+<span>Avg. openings per kill: 7.5</span>
 <br>
-<span>Avg. damage per opening: 15.0%</span>
+<span>Avg. damage per opening: 16.1%</span>
 <br>
-<span>Total damage: 435.4%</span>
+<span>Total damage: 240.8%</span>
 <br>
-<span>Inputs per minute: 319.0</span>
+<span>Inputs per minute: 403.8</span>
 <br>
 </p>
 </div>
