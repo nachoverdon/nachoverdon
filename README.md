@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #5f5;">WIN</span>
+<span style="color: #f55;">LOSE</span>
 <br>
 <span>[bazoo] Falco vs Sheik [spaisi]</span>
 <br>
-<span>Stage: Pokémon Stadium</span>
+<span>Stage: Final Destination</span>
 <br>
-<span>Duration: 3:14</span>
+<span>Duration: 3:01</span>
 <br>
 <br>
-<span>Stocks remaining: 1</span><br>
-<span>Avg. openings per kill: 7.0</span>
+
+<span>Avg. openings per kill: 8.7</span>
 <br>
-<span>Avg. damage per opening: 18.3%</span>
+<span>Avg. damage per opening: 19.6%</span>
 <br>
-<span>Total damage: 511.9%</span>
+<span>Total damage: 508.6%</span>
 <br>
-<span>Inputs per minute: 453.5</span>
+<span>Inputs per minute: 471.3</span>
 <br>
 </p>
 </div>
