@@ -8,19 +8,19 @@
 <br>
 <span>[bazoo] Falco vs Sheik [spaisi]</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Pokémon Stadium</span>
 <br>
-<span>Duration: 3:02</span>
+<span>Duration: 3:14</span>
 <br>
 <br>
-<span>Stocks remaining: 2</span><br>
-<span>Avg. openings per kill: 6.3</span>
+<span>Stocks remaining: 1</span><br>
+<span>Avg. openings per kill: 7.0</span>
 <br>
-<span>Avg. damage per opening: 16.8%</span>
+<span>Avg. damage per opening: 18.3%</span>
 <br>
-<span>Total damage: 420.4%</span>
+<span>Total damage: 511.9%</span>
 <br>
-<span>Inputs per minute: 483.3</span>
+<span>Inputs per minute: 453.5</span>
 <br>
 </p>
 </div>
