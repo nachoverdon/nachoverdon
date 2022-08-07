@@ -270,14 +270,14 @@ async function uploadVideo(videoPath: string) {
   };
 
   axios(config)
-    .catch(function (error) {
-      logger.log("error", "Unable to upload video: " + error);
-    })
-    .finally(async () => {
+    .then(async (res) => {
+      logger.log("info", "Upload successful.", res.data);
+
       try {
         await unlink(videoPath);
       } catch (e) {
         logger.log("error", "Unable to delete video from local. " + e);
       }
     })
+    .catch((error) => logger.log("error", "Unable to upload video: " + error));
 }
