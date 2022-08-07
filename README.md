@@ -6,21 +6,21 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Ness vs Fox [Ceres]</span>
+<span>[bazoo] Ness vs Mr. Game & Watch [Albert 9Stein]</span>
 <br>
-<span>Stage: Final Destination</span>
+<span>Stage: Battlefield</span>
 <br>
-<span>Duration: 0:00</span>
+<span>Duration: 0:13</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 0.0</span>
+<span>Avg. openings per kill: 2.0</span>
 <br>
-<span>Avg. damage per opening: 0.0%</span>
+<span>Avg. damage per opening: 23.6%</span>
 <br>
-<span>Total damage: 0.0%</span>
+<span>Total damage: 47.2%</span>
 <br>
-<span>Inputs per minute: 291.9</span>
+<span>Inputs per minute: 122.0</span>
 <br>
 </p>
 </div>
