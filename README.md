@@ -6,21 +6,21 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Captain Falcon vs Marth [AE.]</span>
+<span>[bazoo] Ness vs Samus [Rabbitalex]</span>
 <br>
-<span>Stage: Battlefield</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 2:36</span>
+<span>Duration: 0:00</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 7.5</span>
+<span>Avg. openings per kill: 0.0</span>
 <br>
-<span>Avg. damage per opening: 16.1%</span>
+<span>Avg. damage per opening: 0.0%</span>
 <br>
-<span>Total damage: 240.8%</span>
+<span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 403.8</span>
+<span>Inputs per minute: 308.6</span>
 <br>
 </p>
 </div>
