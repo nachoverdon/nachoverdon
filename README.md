@@ -6,25 +6,24 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Mr. Game & Watch vs Sheik [I love you]</span>
+<span>[bazoo] Sheik vs Falco [FunKa]</span>
 <br>
-<span>Stage: Yoshi's Story</span>
+<span>Stage: Final Destination</span>
 <br>
-<span>Duration: 0:01</span>
+<span>Duration: 3:14</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 0.0</span>
+<span>Avg. openings per kill: 9.7</span>
 <br>
-<span>Avg. damage per opening: 0.0%</span>
+<span>Avg. damage per opening: 15.0%</span>
 <br>
-<span>Total damage: 0.0%</span>
+<span>Total damage: 435.4%</span>
 <br>
-<span>Inputs per minute: 419.4</span>
+<span>Inputs per minute: 319.0</span>
 <br>
 </p>
 </div>
 <!--END_SECTION:slippi_stats-->
-            
-            
 </div>
+http://nachoverdon.herokuapp.com/last_match.mp4

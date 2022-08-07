@@ -3,40 +3,57 @@ import { config } from "dotenv";
 config();
 
 import { join } from "path";
-import { readdirSync, statSync, lstatSync } from "fs";
+import { createReadStream, lstatSync, readdirSync, statSync } from "fs";
 import { ConnectionStatus, SlpLiveStream, SlpRealTime } from "@vinceau/slp-realtime";
-import { Ports, SlippiGame, characters as SlippiCharacters, stages as SlippiStages } from "@slippi/slippi-js";
-import { Character, Stats } from "./stats";
-import moment from "moment/moment";
-import { execCommandWithResult, sleep } from "./util";
+import { processReplay, Stats } from "./stats";
+import { execCommand, execCommandWithResult, execDetached, sleep } from "./util";
 import { updateReadme } from "./github"
 import * as winston from "winston";
+import { chdir, cwd } from "process";
+import { GameMode, Ports } from "@slippi/slippi-js";
+import OBSWebSocket from "obs-websocket-js";
+import axios from "axios";
+import FormData from "form-data";
+import { unlink } from "fs/promises";
 
 const AppName: string = "watcher";
 const argv: string[] = process.argv.slice(2);
-const ADDRESS = "127.0.0.1";
-const PORT = Ports.DEFAULT;
-const SLIPPI_ACCOUNTS = process.env.SLIPPI_ACCOUNTS!.split(",");
-const SLIPPI_REPLAYS = process.env.SLIPPI_REPLAYS!;
-let lastReplay = "";
-
 export const logger: winston.Logger = setupLogger();
+// Log message
+logger.log("info", `"${AppName}" started with ${argv.length ? argv.join("; ") : "no args"}`);
 
 (() => {
   if (!process.env.SLIPPI_ACCOUNTS || !process.env.SLIPPI_REPLAYS || !process.env.GH_REPO_PATH
-    || !process.env.GH_CONFIG_NAME || !process.env.GH_CONFIG_MAIL) {
+    || !process.env.GH_CONFIG_NAME || !process.env.GH_CONFIG_MAIL || !process.env.UNIQUE_KEY
+    || !process.env.OBS_WS_PORT || !process.env.OBS_WS_PASSWORD || !process.env.OBS_PATH
+    || !process.env.OBS_SCENE || !process.env.SERVER_URL) {
     logger.log("error", "Some .env variables where not defined");
     throw new Error("Some .env variables where not defined");
   }
 })();
 
-// Log message
-logger.log("info", `"${AppName}" started with ${argv.length ? argv.join("; ") : "no args"}`);
+const ADDRESS = "127.0.0.1";
+const OBS_EXE = "obs64.exe";
+const SLIPPI_REPLAYS = process.env.SLIPPI_REPLAYS!;
+const OBS_WS_PORT = process.env.OBS_WS_PORT!;
+const OBS_WS_PASSWORD = process.env.OBS_WS_PASSWORD!;
+const UNIQUE_KEY = process.env.UNIQUE_KEY!;
+const OBS_PATH = process.env.OBS_PATH!;
+const OBS_SCENE = process.env.OBS_SCENE!;
+const SERVER_URL = process.env.SERVER_URL!;
+const obs = new OBSWebSocket();
+let lastReplay = "";
+let slippiRunning = false;
 
 (async () => {
   while (true) {
     while (!await isSlippiRunning()) {
+      await onDolphinClose();
       await sleep(5000);
+    }
+
+    if (!slippiRunning) {
+      await onDolphinStart();
     }
 
     await waitForReplayEnd();
@@ -67,6 +84,78 @@ function setupLogger(): winston.Logger {
     ),
     transports: [transports.file]
   });
+}
+
+async function onObsStart() {
+  try {
+    await obs.connect(`ws://${ADDRESS}:${OBS_WS_PORT}`, OBS_WS_PASSWORD);
+    await obs.on("RecordStateChanged", args => {
+      // @ts-ignore
+      if (args.outputState == "OBS_WEBSOCKET_OUTPUT_STOPPED" && args.outputPath) uploadVideo(args.outputPath);
+    });
+  } catch (e) {
+    console.log("error", "Failed onObsStart: ", e);
+    logger.log("error", "Failed onObsStart: " + e);
+  }
+}
+
+async function onObsClose() {
+  try {
+    await obs.disconnect();
+  } catch (e) {
+    logger.log("error", "Unable to disconnect: " + e);
+  }
+}
+
+async function onDolphinStart() {
+  slippiRunning = true;
+  await startObs();
+}
+
+async function onDolphinClose() {
+  slippiRunning = false;
+  await stopObs();
+}
+
+async function onGameEnd() {
+  await stopObsRecording();
+}
+
+async function onGameStart() {
+  await startObsRecording();
+}
+
+async function startObsRecording() {
+  await obs.call("SetCurrentProgramScene", { sceneName: OBS_SCENE });
+  await obs.call("StartRecord");
+}
+
+async function stopObsRecording() {
+  await obs.call("StopRecord");
+}
+
+async function startObs() {
+  const dir = cwd();
+
+  chdir(OBS_PATH);
+  try {
+    await execDetached(join(OBS_PATH, OBS_EXE),
+    [ "--multi", "--disable-updater", "--disable-missing-files-check", "--minimize-to-tray", `--scene "${OBS_SCENE}"` ]);
+  } catch (e) {
+    logger.info("error", "Failed to start OBS", e);
+  }
+
+  chdir(dir);
+  sleep(10000).then(onObsStart).catch(console.error);
+}
+
+async function stopObs() {
+  try {
+    await execCommand("taskkill", ["/IM", "obs64.exe", "/F"])
+    await onObsClose();
+  } catch (e) {
+    console.error("Failed to kill OBS", e);
+  }
 }
 
 async function processLatestReplay(): Promise<Stats | null> {
@@ -116,184 +205,13 @@ function getAllSlpFiles(directory: string, files: string[] = []): string[] {
   return files;
 }
 
-function getPlayerIndex(game: SlippiGame): number {
-  const players = game.getMetadata()!.players;
-
-  for (const index in players) {
-    // @ts-ignore
-    const player: any = players[index];
-
-    if (SLIPPI_ACCOUNTS.includes(player.names.code))
-      return parseInt(index);
-  }
-
-  console.log(`Cannot find any account that matches ${SLIPPI_ACCOUNTS.join(", ")}`);
-
-  return -1;
-}
-
-/**
- * -1 = Draw or unresolved
- * 0 = Player 1
- * 1 = Player 2
- *
- * @param game
- */
-function getWinnerIndex(game: SlippiGame): number {
-  const gameEnd = game.getGameEnd();
-
-  if (!gameEnd)
-    return -1;
-
-  const gameEndMethod = gameEnd!.gameEndMethod;
-
-  switch (gameEndMethod) {
-    case 1: {
-      const latestFrame = game.getLatestFrame();
-
-      if (!latestFrame)
-        return 0;
-
-      const p1Percent = latestFrame.players[0]!.post.percent!;
-      const p2Percent = latestFrame.players[1]!.post.percent!;
-
-      if (p1Percent === p2Percent)
-        return -1;
-      else if (p1Percent > p2Percent)
-        return 1;
-
-      return 0;
-    }
-    case 2: {
-      const latestFrame = game.getLatestFrame();
-
-      if (!latestFrame)
-        return -1;
-
-      const p1StocksRemaining = latestFrame.players[0]!.post.stocksRemaining!;
-      const p2StocksRemaining = latestFrame.players[1]!.post.stocksRemaining!;
-
-      if (p1StocksRemaining === p2StocksRemaining)
-        return -1;
-      if (p1StocksRemaining > p2StocksRemaining)
-        return 0;
-
-      return 1;
-    }
-    case 7:
-      if (gameEnd.lrasInitiatorIndex == 0)
-        return 1;
-
-      return 0;
-    case 0:
-    default:
-      return -1;
-  }
-}
-
-function getStats(game: SlippiGame, playerIndex: number): Stats {
-  const win = getWinnerIndex(game) === playerIndex;
-  const character = getCharacter(game, playerIndex);
-  const opIndex = playerIndex === 0 ? 1 : 0;
-  const opCharacter = getCharacter(game, opIndex);
-  const opNametag = game.getMetadata()!.players![opIndex].names!.netplay ?? game.getMetadata()!.players![opIndex].names!.code!
-  const stage = SlippiStages.getStageName(game.getSettings()!.stageId!);
-  const stocksRemaining = game.getLatestFrame()!.players[playerIndex]!.post.stocksRemaining!;
-  const stats = game.getStats()!;
-  const overallStats = stats.overall[playerIndex];
-  const openingsPerKill = overallStats.openingsPerKill.ratio ? overallStats.openingsPerKill.ratio : 0;
-  const totalDamage = overallStats.totalDamage;
-  const damagePerOpening = overallStats.damagePerOpening.ratio ? overallStats.damagePerOpening.ratio : 0;
-  const inputsPerMinute = overallStats.inputsPerMinute.ratio ? overallStats.inputsPerMinute.ratio : 0;
-  const duration = getDuration(stats.lastFrame);
-
-
-  return {
-    win: win,
-    character: character,
-    opponentCharacter: opCharacter,
-    opponentNameTag: opNametag,
-    stage: stage,
-    stocksRemaining: stocksRemaining,
-    openingsPerKill: openingsPerKill,
-    totalDamage: totalDamage,
-    damagePerOpening: damagePerOpening,
-    inputsPerMinute: inputsPerMinute,
-    duration: duration,
-  }
-}
-
-function getCharacter(game: SlippiGame, playerIndex: number): Character {
-  const characterId = game.getSettings()!.players[playerIndex].characterId!;
-  const name = SlippiCharacters.getCharacterName(characterId);
-
-  return {
-    name: name,
-    id: characterId,
-  }
-}
-
-function getDuration(frames: number): string {
-  const duration = moment.duration(frames / 60, 'seconds');
-
-  return moment.utc(duration.as('milliseconds')).format('m:ss');
-}
-
-function processReplay(replayPath: string): Stats | null {
-  const game = new SlippiGame(replayPath);
-
-  if (!game)
-    throw new Error("Game is null.");
-
-  const anyPlayerIsNotHuman = game.getSettings()!.players.find(player => {
-    return player.type == 1 || player.type == 2 || player.type == 3;
-  });
-
-  if (anyPlayerIsNotHuman) {
-    console.log("A player is not human.");
-
-    return null;
-  }
-
-  const gameIsUnresolved = game.getGameEnd() && game.getGameEnd()?.gameEndMethod === 0;
-
-  if (gameIsUnresolved) {
-    console.log("Game is unresolved");
-
-    return null;
-  }
-
-  // console.log(game.getSettings(), game.getMetadata(), game.getStats());
-  // @ts-ignore
-  const accountIndex = getPlayerIndex(game);
-
-  if (accountIndex === -1) {
-    console.log("Player not found. Get gud, kid.");
-
-    return null;
-  }
-
-  // Ignore doubles games
-  if (game.getSettings()!.players.length > 2) {
-    console.log("Doubles are not supported.");
-
-    return null;
-  }
-
-  return getStats(game, accountIndex);
-}
-
 async function waitForReplayEnd() {
   let shouldKeepWaiting = true;
   const stream = new SlpLiveStream("dolphin"); //  { outputFiles: false } when +3.2.0 gets released
 
-  stream.start(ADDRESS, PORT)
-    .then(() => {
-      console.log("Connected to Slippi");
-    })
-    .catch((err) => {
-      console.error("Unable to connect to Slippi", err);
-    });
+  stream.start(ADDRESS, Ports.DEFAULT)
+    .then(() => console.log("Connected to Slippi"))
+    .catch((err) => console.error("Unable to connect to Slippi", err));
   stream.connection.on("statusChange", (status) => {
     if (status === ConnectionStatus.DISCONNECTED) {
       shouldKeepWaiting = false
@@ -303,10 +221,22 @@ async function waitForReplayEnd() {
   const realtime = new SlpRealTime();
 
   realtime.setStream(stream);
-  realtime.game.end$.subscribe((_) => shouldKeepWaiting = false);
+  realtime.game.end$.subscribe((_) => {
+    shouldKeepWaiting = false;
+    onGameEnd();
+  });
+
+  realtime.game.start$.subscribe((gameStart) => {
+    if (gameStart.gameMode != GameMode.ONLINE) {
+      return;
+    }
+
+    onGameStart();
+  });
+
 
   while (shouldKeepWaiting) {
-    await sleep(5000);
+    await sleep(1000);
   }
 
   stream.end();
@@ -320,4 +250,34 @@ async function isSlippiRunning(): Promise<boolean> {
     }
 
     return result.includes("Slippi Dolphin.exe");
+}
+
+async function uploadVideo(videoPath: string) {
+  const data = new FormData();
+
+  data.append('video', createReadStream(videoPath));
+  data.append('UNIQUE_KEY', UNIQUE_KEY);
+
+  const config = {
+    method: 'post',
+    url: `${SERVER_URL}/uploadLastMatch`,
+    headers: {
+      ...data.getHeaders()
+    },
+    data : data,
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity,
+  };
+
+  axios(config)
+    .catch(function (error) {
+      logger.log("error", "Unable to upload video: " + error);
+    })
+    .finally(async () => {
+      try {
+        await unlink(videoPath);
+      } catch (e) {
+        logger.log("error", "Unable to delete video from local. " + e);
+      }
+    })
 }

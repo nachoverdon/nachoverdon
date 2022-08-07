@@ -4,6 +4,10 @@ export function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+export async function execDetached(cmd: string, args: string[]) {
+  spawn(cmd, args).unref();
+}
+
 export async function execCommand(cmd: string, args: string[] = []): Promise<number> {
   return new Promise((resolve, reject) => {
     const app = spawn(cmd, args, { stdio: "inherit" });

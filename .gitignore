@@ -10,6 +10,5 @@ js
 # Environment variables
 .env
 
-# Replay watcher.exe
-replay_watcher/*.exe
-replay_watcher/*.bat
+# Log
+*.log
