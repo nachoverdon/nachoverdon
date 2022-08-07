@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Ness vs Ganondorf [twitch_elzo1990]</span>
+<span>[bazoo] Falco vs Sheik [spaisi]</span>
 <br>
 <span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 0:00</span>
+<span>Duration: 3:02</span>
 <br>
 <br>
-
-<span>Avg. openings per kill: 0.0</span>
+<span>Stocks remaining: 2</span><br>
+<span>Avg. openings per kill: 6.3</span>
 <br>
-<span>Avg. damage per opening: 0.0%</span>
+<span>Avg. damage per opening: 16.8%</span>
 <br>
-<span>Total damage: 0.0%</span>
+<span>Total damage: 420.4%</span>
 <br>
-<span>Inputs per minute: 327.3</span>
+<span>Inputs per minute: 483.3</span>
 <br>
 </p>
 </div>
