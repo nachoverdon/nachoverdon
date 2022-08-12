@@ -6,21 +6,21 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Pichu vs Fox [$ton]</span>
+<span>[bazoo] Falco vs Falco [TheDudeSSBM]</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Dream Land N64</span>
 <br>
-<span>Duration: 0:00</span>
+<span>Duration: 2:39</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 0.0</span>
+<span>Avg. openings per kill: 11.0</span>
 <br>
-<span>Avg. damage per opening: 0.0%</span>
+<span>Avg. damage per opening: 18.4%</span>
 <br>
-<span>Total damage: 0.0%</span>
+<span>Total damage: 405.3%</span>
 <br>
-<span>Inputs per minute: 257.1</span>
+<span>Inputs per minute: 462.7</span>
 <br>
 </p>
 </div>
