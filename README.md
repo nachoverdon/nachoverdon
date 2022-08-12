@@ -8,19 +8,19 @@
 <br>
 <span>[bazoo] Falco vs Falco [TheDudeSSBM]</span>
 <br>
-<span>Stage: Dream Land N64</span>
+<span>Stage: Battlefield</span>
 <br>
-<span>Duration: 2:39</span>
+<span>Duration: 2:15</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 11.0</span>
+<span>Avg. openings per kill: 17.0</span>
 <br>
-<span>Avg. damage per opening: 18.4%</span>
+<span>Avg. damage per opening: 14.9%</span>
 <br>
-<span>Total damage: 405.3%</span>
+<span>Total damage: 252.9%</span>
 <br>
-<span>Inputs per minute: 462.7</span>
+<span>Inputs per minute: 427.8</span>
 <br>
 </p>
 </div>
