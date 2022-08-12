@@ -6,21 +6,21 @@
 <p>
 <span style="color: #f55;">LOSE</span>
 <br>
-<span>[bazoo] Falco vs Sheik [spaisi]</span>
+<span>[bazoo] Pichu vs Fox [$ton]</span>
 <br>
-<span>Stage: Final Destination</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 3:01</span>
+<span>Duration: 0:00</span>
 <br>
 <br>
 
-<span>Avg. openings per kill: 8.7</span>
+<span>Avg. openings per kill: 0.0</span>
 <br>
-<span>Avg. damage per opening: 19.6%</span>
+<span>Avg. damage per opening: 0.0%</span>
 <br>
-<span>Total damage: 508.6%</span>
+<span>Total damage: 0.0%</span>
 <br>
-<span>Inputs per minute: 471.3</span>
+<span>Inputs per minute: 257.1</span>
 <br>
 </p>
 </div>
