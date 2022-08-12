@@ -8,19 +8,19 @@
 <br>
 <span>[bazoo] Falco vs Falco [TheDudeSSBM]</span>
 <br>
-<span>Stage: Final Destination</span>
+<span>Stage: Yoshi's Story</span>
 <br>
-<span>Duration: 2:36</span>
+<span>Duration: 2:12</span>
 <br>
 <br>
 <span>Stocks remaining: 1</span><br>
-<span>Avg. openings per kill: 5.3</span>
+<span>Avg. openings per kill: 4.3</span>
 <br>
-<span>Avg. damage per opening: 16.5%</span>
+<span>Avg. damage per opening: 20.8%</span>
 <br>
-<span>Total damage: 347.4%</span>
+<span>Total damage: 354.2%</span>
 <br>
-<span>Inputs per minute: 466.4</span>
+<span>Inputs per minute: 455.3</span>
 <br>
 </p>
 </div>
