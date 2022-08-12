@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
 <span>[bazoo] Falco vs Falco [TheDudeSSBM]</span>
 <br>
-<span>Stage: Battlefield</span>
+<span>Stage: Final Destination</span>
 <br>
-<span>Duration: 2:15</span>
+<span>Duration: 2:36</span>
 <br>
 <br>
-
-<span>Avg. openings per kill: 17.0</span>
+<span>Stocks remaining: 1</span><br>
+<span>Avg. openings per kill: 5.3</span>
 <br>
-<span>Avg. damage per opening: 14.9%</span>
+<span>Avg. damage per opening: 16.5%</span>
 <br>
-<span>Total damage: 252.9%</span>
+<span>Total damage: 347.4%</span>
 <br>
-<span>Inputs per minute: 427.8</span>
+<span>Inputs per minute: 466.4</span>
 <br>
 </p>
 </div>
