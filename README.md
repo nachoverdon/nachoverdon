@@ -6,21 +6,21 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Falco vs Captain Falcon [MAX-THE_MAX-MAX]</span>
+<span>[bazoo] Falco vs Ness [Nivelfacil]</span>
 <br>
-<span>Stage: Pokémon Stadium</span>
+<span>Stage: Yoshi's Story</span>
 <br>
-<span>Duration: 1:24</span>
+<span>Duration: 2:18</span>
 <br>
 <br>
-<span>Stocks remaining: 3</span><br>
-<span>Avg. openings per kill: 2.3</span>
+<span>Stocks remaining: 2</span><br>
+<span>Avg. openings per kill: 6.7</span>
 <br>
-<span>Avg. damage per opening: 35.3%</span>
+<span>Avg. damage per opening: 19.0%</span>
 <br>
-<span>Total damage: 317.8%</span>
+<span>Total damage: 379.6%</span>
 <br>
-<span>Inputs per minute: 440.8</span>
+<span>Inputs per minute: 430.9</span>
 <br>
 </p>
 </div>
