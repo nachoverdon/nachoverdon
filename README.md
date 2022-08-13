@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #5f5;">WIN</span>
+<span style="color: #f55;">LOSE</span>
 <br>
 <span>[bazoo] Falco vs Ness [Nivelfacil]</span>
 <br>
-<span>Stage: Yoshi's Story</span>
+<span>Stage: Dream Land N64</span>
 <br>
-<span>Duration: 2:18</span>
+<span>Duration: 3:59</span>
 <br>
 <br>
-<span>Stocks remaining: 2</span><br>
-<span>Avg. openings per kill: 6.7</span>
+
+<span>Avg. openings per kill: 9.3</span>
 <br>
-<span>Avg. damage per opening: 19.0%</span>
+<span>Avg. damage per opening: 18.9%</span>
 <br>
-<span>Total damage: 379.6%</span>
+<span>Total damage: 528.6%</span>
 <br>
-<span>Inputs per minute: 430.9</span>
+<span>Inputs per minute: 427.7</span>
 <br>
 </p>
 </div>
