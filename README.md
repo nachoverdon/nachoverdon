@@ -6,21 +6,21 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Fox vs Ganondorf [Comrade]</span>
+<span>[bazoo] Fox vs Ganondorf [Panpilou]</span>
 <br>
-<span>Stage: Pokémon Stadium</span>
+<span>Stage: Yoshi's Story</span>
 <br>
-<span>Duration: 2:23</span>
+<span>Duration: 3:03</span>
 <br>
 <br>
-<span>Stocks remaining: 3</span><br>
-<span>Avg. openings per kill: 4.5</span>
+<span>Stocks remaining: 1</span><br>
+<span>Avg. openings per kill: 6.0</span>
 <br>
-<span>Avg. damage per opening: 20.3%</span>
+<span>Avg. damage per opening: 16.4%</span>
 <br>
-<span>Total damage: 364.6%</span>
+<span>Total damage: 394.6%</span>
 <br>
-<span>Inputs per minute: 480.2</span>
+<span>Inputs per minute: 443.3</span>
 <br>
 </p>
 </div>
