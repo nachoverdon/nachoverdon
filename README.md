@@ -6,21 +6,21 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Falco vs Falco [TheDudeSSBM]</span>
+<span>[bazoo] Falco vs Captain Falcon [MAX-THE_MAX-MAX]</span>
 <br>
-<span>Stage: Yoshi's Story</span>
+<span>Stage: Pokémon Stadium</span>
 <br>
-<span>Duration: 2:12</span>
+<span>Duration: 1:24</span>
 <br>
 <br>
-<span>Stocks remaining: 1</span><br>
-<span>Avg. openings per kill: 4.3</span>
+<span>Stocks remaining: 3</span><br>
+<span>Avg. openings per kill: 2.3</span>
 <br>
-<span>Avg. damage per opening: 20.8%</span>
+<span>Avg. damage per opening: 35.3%</span>
 <br>
-<span>Total damage: 354.2%</span>
+<span>Total damage: 317.8%</span>
 <br>
-<span>Inputs per minute: 455.3</span>
+<span>Inputs per minute: 440.8</span>
 <br>
 </p>
 </div>
