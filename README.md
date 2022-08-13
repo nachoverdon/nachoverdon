@@ -4,23 +4,23 @@
 <div>
 <h1>Latest match stats:</h1>
 <p>
-<span style="color: #f55;">LOSE</span>
+<span style="color: #5f5;">WIN</span>
 <br>
 <span>[bazoo] Falco vs Ness [Nivelfacil]</span>
 <br>
-<span>Stage: Dream Land N64</span>
+<span>Stage: Fountain of Dreams</span>
 <br>
-<span>Duration: 3:59</span>
+<span>Duration: 2:57</span>
 <br>
 <br>
-
-<span>Avg. openings per kill: 9.3</span>
+<span>Stocks remaining: 2</span><br>
+<span>Avg. openings per kill: 5.8</span>
 <br>
-<span>Avg. damage per opening: 18.9%</span>
+<span>Avg. damage per opening: 23.8%</span>
 <br>
-<span>Total damage: 528.6%</span>
+<span>Total damage: 546.3%</span>
 <br>
-<span>Inputs per minute: 427.7</span>
+<span>Inputs per minute: 475.5</span>
 <br>
 </p>
 </div>
