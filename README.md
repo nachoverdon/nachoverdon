@@ -6,21 +6,21 @@
 <p>
 <span style="color: #5f5;">WIN</span>
 <br>
-<span>[bazoo] Falco vs Ness [Nivelfacil]</span>
+<span>[bazoo] Fox vs Ganondorf [Comrade]</span>
 <br>
-<span>Stage: Fountain of Dreams</span>
+<span>Stage: Dream Land N64</span>
 <br>
-<span>Duration: 2:57</span>
+<span>Duration: 2:51</span>
 <br>
 <br>
 <span>Stocks remaining: 2</span><br>
-<span>Avg. openings per kill: 5.8</span>
+<span>Avg. openings per kill: 4.0</span>
 <br>
-<span>Avg. damage per opening: 23.8%</span>
+<span>Avg. damage per opening: 29.0%</span>
 <br>
-<span>Total damage: 546.3%</span>
+<span>Total damage: 463.6%</span>
 <br>
-<span>Inputs per minute: 475.5</span>
+<span>Inputs per minute: 423.6</span>
 <br>
 </p>
 </div>
