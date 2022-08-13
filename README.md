@@ -8,19 +8,19 @@
 <br>
 <span>[bazoo] Fox vs Ganondorf [Comrade]</span>
 <br>
-<span>Stage: Dream Land N64</span>
+<span>Stage: Pokémon Stadium</span>
 <br>
-<span>Duration: 2:51</span>
+<span>Duration: 2:23</span>
 <br>
 <br>
-<span>Stocks remaining: 2</span><br>
-<span>Avg. openings per kill: 4.0</span>
+<span>Stocks remaining: 3</span><br>
+<span>Avg. openings per kill: 4.5</span>
 <br>
-<span>Avg. damage per opening: 29.0%</span>
+<span>Avg. damage per opening: 20.3%</span>
 <br>
-<span>Total damage: 463.6%</span>
+<span>Total damage: 364.6%</span>
 <br>
-<span>Inputs per minute: 423.6</span>
+<span>Inputs per minute: 480.2</span>
 <br>
 </p>
 </div>
